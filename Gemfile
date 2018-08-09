@@ -32,6 +32,12 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'popper_js', '~> 1.14', '>= 1.14.3'
 
 gem "clearance"
+
+gem "figaro"
+
+gem 'omniauth'
+
+gem 'omniauth-google-oauth2'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
