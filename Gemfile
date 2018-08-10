@@ -38,6 +38,8 @@ gem "figaro"
 gem 'omniauth'
 
 gem 'omniauth-google-oauth2'
+
+gem 'acts-as-taggable-on', '~> 6.0'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password

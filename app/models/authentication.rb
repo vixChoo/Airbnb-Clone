@@ -13,5 +13,5 @@ class Authentication < ApplicationRecord
     self.token = auth_hash["credentials"]["token"]
     self.save
   end
-  
+
 end

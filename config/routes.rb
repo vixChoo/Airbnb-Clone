@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :listings
   root 'listings#index'
   get 'listings/index'
   get 'listings/show'
@@ -10,4 +11,5 @@ Rails.application.routes.draw do
       only: [:create, :edit, :update]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-end
+end 
+
