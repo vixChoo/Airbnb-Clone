@@ -29,15 +29,14 @@
 				  <div id="navbarMenu" class="collapse navbar-collapse" >
          		 <ul class="navbar-nav ml-auto navbar-right"  >
 											
-								<li><%= link_to 'Sign in', sign_in_path %></li>					
-								<li><%= link_to "Sign in with Google", "/auth/google_oauth2" %></li>					
+									<li> <%= link_to 'Add a Listing' ,new_listing_path%></li>
 								<li><a style="margin-right: 10px" href="/">About</a></li>  
 								<% if signed_in? %>
-        				  Signed in as: <%= current_user.email %>
-									<li> <%= link_to 'Add a Listing' ,new_listing_path%></li>
+         					 <li><%= link_to 'Sign out', sign_out_path, method: :delete %></li>
+										<% else %>
+								<li><%= link_to 'Sign in', sign_in_path %></li>					
+								<% end %>
 													
-         			 <li><%= link_to 'Sign out', sign_out_path, method: :delete %></li>
-									  <% end %>
 																				
 						</ul>
 				</div>

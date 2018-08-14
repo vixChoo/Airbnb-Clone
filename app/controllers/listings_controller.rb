@@ -14,12 +14,17 @@ class ListingsController < ApplicationController
   # GET /listings/1.json
   
 
-  def show
+  def show  
   end
 
   # GET /listings/new
   def new
-    @listing = Listing.new
+    if signed_in?
+      @listing = Listing.new
+      else
+       redirect_to sign_in_path ,notice: 'Sign in to create a new list.' 
+
+    end
   end
 
   # GET /listings/1/edit
