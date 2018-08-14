@@ -8,6 +8,11 @@
   <%= form.text_field :first_name, type: 'text' %>
 </div>
 
+<div class="field">
+  <%= form.label :avatar %>
+  <%= form.file_field :avatar %>
+</div>
+
 <div class="text-field">
   <%= form.label :last_name %>
   <%= form.text_field :last_name, type: 'text' %>
@@ -22,3 +27,4 @@
   <%= form.label :password %>
   <%= form.password_field :password %>
 </div>
+

@@ -1,14 +1,19 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
 
+  def index
+    params[:tag] ? @listing = Listing.tagged_with(params[:tag]) : @listing = Listing.all.order(created_at: :desc).page(params[:page])
+  end
   # GET /listings
   # GET /listings.json
-  def index
-    @listings = Listing.all
-  end
+  # def index
+  #   @listings = Listing.all
+  # end
 
   # GET /listings/1
   # GET /listings/1.json
+  
+
   def show
   end
 
@@ -25,7 +30,8 @@ class ListingsController < ApplicationController
   # POST /listings.json
   def create
     @listing = Listing.new(listing_params)
-
+    @listing.user_id = current_user.id
+    
     respond_to do |format|
       if @listing.save
         format.html { redirect_to @listing, notice: 'Listing was successfully created.' }
@@ -69,6 +75,7 @@ class ListingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
-      params.require(:listing).permit(:name, :price, :description, :address, :country, :city, :house_rules, :property_type, :facility, :amenity)
+      params.require(:listing).permit(:name, :price, :description, :address, :country, :city, :house_rules,
+         :property_type, :facility, :amenity,{images: []},:tag_list, :tag, { tag_ids: [] }, :tag_ids)
     end
 end

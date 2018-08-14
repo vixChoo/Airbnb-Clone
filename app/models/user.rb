@@ -1,8 +1,15 @@
 class User < ApplicationRecord
   include Clearance::User
+  # enum role: ["Member","Host","Admin"]
+
+  # sean = User.find(1)
+  # sean.Admin! ---> is set sean to admin
+  # sean.Admin? --> is it admin?? 
+  # enum better use --> interger
+
   has_many :authentications, dependent: :destroy
   has_many :listings, dependent: :destroy
-  acts_as_tagger
+  mount_uploader :avatar, AvatarUploader
 
   
  def self.create_with_auth_and_hash(authentication, auth_hash)

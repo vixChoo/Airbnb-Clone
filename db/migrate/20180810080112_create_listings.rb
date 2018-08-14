@@ -11,7 +11,8 @@ class CreateListings < ActiveRecord::Migration[5.2]
       t.string :property_type
       t.string :facility
       t.string :amenity
-
+      t.references :user,index:true 
+            
       t.timestamps
     end
   end
