@@ -47,6 +47,17 @@
 				</div>
 		</nav>
 
+		
+					<% flash.each do |key, value| %>
+						<div class="alert <%= flash_class(key).to_s %> fade in">
+						<a href="#" data-dismiss="alert" class="close">×</a>
+						<%= value %>
+						</div>
+					<% end %>
+
     <%= yield %>
+				
+
+
   </body>
 </html>

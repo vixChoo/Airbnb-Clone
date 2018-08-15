@@ -14,6 +14,6 @@
   <strong>End date:</strong>
   <%= @reservation.end_date %>
 </p>
-
+<%= link_to "Make Payment", new_braintree_path %>
 <%= link_to 'Edit', edit_reservation_path(@reservation) %> |
 <%= link_to 'Back', reservations_path %>

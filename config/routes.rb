@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :braintree
+  post 'braintree/checkout'
+  
   resources :reservations
   resources :listings
   root 'listings#home'
