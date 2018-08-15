@@ -51,4 +51,8 @@
 </p>
 
 <%= link_to 'Edit', edit_listing_path(@listing) %> |
+
+<h1>New Reservation</h1>
+<%= render partial: 'reservations/form', reservation: @reservation %>
+
 <%= link_to 'Back', listings_path %>

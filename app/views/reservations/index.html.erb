@@ -5,8 +5,7 @@
 <table>
   <thead>
     <tr>
-      <th>Belongs to</th>
-      <th>Belongs to</th>
+    
       <th>Status</th>
       <th>Start date</th>
       <th>End date</th>
@@ -17,8 +16,7 @@
   <tbody>
     <% @reservations.each do |reservation| %>
       <tr>
-        <td><%= reservation.belongs_to %></td>
-        <td><%= reservation.belongs_to %></td>
+   
         <td><%= reservation.status %></td>
         <td><%= reservation.start_date %></td>
         <td><%= reservation.end_date %></td>

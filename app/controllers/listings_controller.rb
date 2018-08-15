@@ -15,11 +15,21 @@ class ListingsController < ApplicationController
   
 
   def show
+     if signed_in?
+      @reservation = Reservation.new
+      else
+        redirect_to sign_in_path, notice: 'Sign in to book a room.'
+
+    end
   end
 
   # GET /listings/new
   def new
-    @listing = Listing.new
+    if signed_in?
+      @listing = Listing.new
+      else
+      redirect_to sign_in_path, notice: 'Sign in to create a list.'
+    end
   end
 
   # GET /listings/1/edit

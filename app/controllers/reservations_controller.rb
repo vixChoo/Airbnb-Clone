@@ -4,7 +4,7 @@ class ReservationsController < ApplicationController
   # GET /reservations
   # GET /reservations.json
   def index
-    @reservations = Reservation.all
+    @reservation = Reservation.all
   end
 
   # GET /reservations/1
@@ -14,7 +14,12 @@ class ReservationsController < ApplicationController
 
   # GET /reservations/new
   def new
-    @reservation = Reservation.new
+    if signed_in?
+      @reservation = Reservation.new
+      else
+        redirect_to sign_in_path, notice: 'Sign in to book a room.'
+
+    end
   end
 
   # GET /reservations/1/edit
@@ -24,7 +29,9 @@ class ReservationsController < ApplicationController
   # POST /reservations
   # POST /reservations.json
   def create
-    @reservation = Reservation.new(reservation_params)
+      @reservation = Reservation.new(reservation_params)
+      @reservation.user_id = current_user.id
+  
 
     respond_to do |format|
       if @reservation.save
@@ -69,6 +76,6 @@ class ReservationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reservation_params
-      params.require(:reservation).permit(:belongs_to, :belongs_to, :status, :start_date, :end_date)
+      params.require(:reservation).permit(:status, :start_date, :end_date,:listing_id)
     end
 end
