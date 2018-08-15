@@ -1,5 +1,6 @@
 class Listing < ApplicationRecord
    has_many :taggings
+   has_many :reservations, dependent: :destroy
    has_many :tags, through: :taggings
    belongs_to :user
    paginates_per 9
