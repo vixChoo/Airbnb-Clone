@@ -1,20 +1,25 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
 
+  # GET /listings
+  # GET /listings.json
   def index
     params[:tag] ? @listing = Listing.tagged_with(params[:tag]) : @listing = Listing.all.order(created_at: :desc).page(params[:page])
   end
-  # GET /listings
-  # GET /listings.json
   # def index
   #   @listings = Listing.all
   # end
 
+
   # GET /listings/1
   # GET /listings/1.json
-  
+  def show 
+    if signed_in?
+      @reservation = Reservation.new
 
-  def show  
+      else
+       redirect_to sign_in_path ,notice: 'Sign in to book a room.' 
+    end
   end
 
   # GET /listings/new
@@ -31,11 +36,12 @@ class ListingsController < ApplicationController
   def edit
   end
 
-  # POST /listings
+   # POST /listings
   # POST /listings.json
   def create
     @listing = Listing.new(listing_params)
     @listing.user_id = current_user.id
+   
     
     respond_to do |format|
       if @listing.save

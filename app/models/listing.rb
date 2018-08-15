@@ -1,6 +1,7 @@
 class Listing < ApplicationRecord
    has_many :taggings
    has_many :tags, through: :taggings
+   has_many :reservations, dependent: :destroy
    belongs_to :user
    paginates_per 9
    mount_uploaders :images, ImageUploader

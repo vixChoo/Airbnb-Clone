@@ -20,7 +20,7 @@
   <%= @listing.address %>
 </p>
 
-<p>
+<p> 
   <strong>Country:</strong>
   <%= @listing.country %>
 </p>
@@ -52,3 +52,9 @@
 
 <%= link_to 'Edit', edit_listing_path(@listing) %> |
 <%= link_to 'Back', listings_path %>
+
+<h1>Reserva It Now</h1>
+
+<%= render partial: 'reservations/form', reservation: @reservation %>
+
+<%= link_to 'Back', reservations_path %>

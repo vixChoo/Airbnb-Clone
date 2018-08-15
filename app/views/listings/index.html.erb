@@ -18,9 +18,11 @@
               <% if listing.images.count == 0 %>
                <%= image_tag (["14.jpg","4.jpg","2.jpg","3.jpg"].sample), style:'height:200px;width:20rem;' ,class:"card-img-top" %>
               <% else %>
-                <% listing.images.each do|image| %>
-              <%= image_tag image.url, style:'height:200px;width:20rem;' ,class:"card-img-top" %>
-                   <% end %>
+            
+              <%   img = [] %>
+                <% listing.images.each{ |image| img << image.url }  %>
+                <%= image_tag img.sample, style:'height:200px;width:20rem;' ,class:"card-img-top" %>
+
               <% end %>
                 
             <div class="card-body">
