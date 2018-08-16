@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
+
+  require 'sidekiq/web'
+  mount Sidekiq::Web => 'sidekiq'
+  
   resources :braintree
   post 'braintree/checkout'
   
   resources :reservations
   resources :listings
+
+
   root 'listings#home'
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 

@@ -30,11 +30,11 @@ class ReservationsController < ApplicationController
   def create
       @reservation = Reservation.new(reservation_params)
       @reservation.user_id = current_user.id
-      @user = current_user  
+      @user = current_user
 
     respond_to do |format|
       if @reservation.save
-        ReservationMailer.booking_email(@user,@reservation).deliver_later
+        ReservationJob.perform_later(current_user,@reservation)
         format.html { redirect_to @reservation, notice: 'Reservation was successfully created.' }
         format.json { render :show, status: :created, location: @reservation }
       else
