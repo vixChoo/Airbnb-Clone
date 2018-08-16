@@ -5,10 +5,10 @@
           <p id="notice"><%= notice %></p>
 
           <h1>Listings</h1>
+        <div class="text-center">
+            <%= paginate @listing %>
+            <div class="text-center"></div>
 
-          <%= paginate @listing %>
-
-            
              
              <div class="card-deck">
               <% @listing.each do |listing| %>
@@ -50,8 +50,9 @@
           </div>
        
         
-
+    <div class="text-center">
           <%= paginate @listing %>
+    </div>
 
 
           <br>
