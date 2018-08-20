@@ -11,56 +11,37 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
               <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One" rel="stylesheet">
-							
+              <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     
-  </head>
- 
- 
-				<nav class="navbar navbar-expand-md bg-transparent navbar-fixed-top">
-				
-						<!-- Brand/logo -->
-						 <div class="navbar-header">
-						
-								<%= link_to image_tag("pink.png", alt: "logo",style:"width:100px;padding-top:0px;", title:"Home"), '/', class: 'navbar-brand' %>
-								 <button class="navbar-toggler" data-toggle="collapse" data-target="navbarMenu" style="background-color: lightgrey">
-								  <span class="navbar-toggler-icon" style="color: white"></span>
-								</button>
-				 		  </div>
-						<!-- Links -->
-				  <div id="navbarMenu" class="collapse navbar-collapse" >
-         		 <ul class="navbar-nav ml-auto navbar-right"  >
-											
-								<li><%= link_to 'Sign in', sign_in_path %></li>					
-								<li><%= link_to "Sign in with Google", "/auth/google_oauth2" %></li>					
-								<li><a style="margin-right: 10px" href="/">About</a></li>  
-								<% if signed_in? %>
-        				  Signed in as: <%= current_user.email %>
-									<li> <%= link_to 'Add a Listing' ,new_listing_path%></li>
-													
-         			 <li><%= link_to 'Sign out', sign_out_path, method: :delete %></li>
-									  <% end %>
-																				
-						</ul>
-				</div>
-		</nav>
+  </head> 
 
-		
-					<% flash.each do |key, value| %>
-						<div class="alert <%= flash_class(key) %> fade in">
-						<a href="#" data-dismiss="alert" class="close">×</a>
-						<%= value %>
-						</div>
-					<% end %>
+                              <% unless current_page?(root_path) %>
+                              <div class="container-fluid" style="font-family: 'Julius Sans One', sans-serif;"> 
+                                  <%= render partial:'navbar'%>
+                              </div>
+                            <% end %>
+                    
+                              <% if flash.present? %>
+                                    <% flash.each do |name, msg| %>
+                                      <div class="alert alert-<%= name %> fade in" role="alert">
+                                      <%= msg %>
+                                      </div>
+                                    <% end %>
+                              <% end %>
+
+
+
+
 
     <%= yield %>
 				
 
-        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-
+      
   </body>
 </html>

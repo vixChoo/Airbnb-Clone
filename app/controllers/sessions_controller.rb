@@ -8,7 +8,8 @@ def create_from_omniauth
     user = authentication.user
     authentication.update_token(auth_hash)
     @next = root_url
-    @notice = "Signed in!"
+    # @notice = "Signed in!"
+    @notice = "Welcome #{user.first_name} #{user.last_name}  !"
   # else: user logs in with OAuth for the first time
   else
     user = User.create_with_auth_and_hash(authentication, auth_hash)
@@ -19,6 +20,6 @@ def create_from_omniauth
   end
 
   sign_in(user)
-  redirect_to @next, :notice => @notice
+  redirect_to @next, info:@notice
 end
 end

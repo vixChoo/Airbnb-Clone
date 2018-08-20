@@ -3,8 +3,18 @@ class Listing < ApplicationRecord
    has_many :reservations, dependent: :destroy
    has_many :tags, through: :taggings
    belongs_to :user
-   paginates_per 9
+   paginates_per 12
    mount_uploaders :images, ImageUploader
+
+   def self.search(term)
+    Listing.where("name LIKE ? OR description LIKE ? OR address LIKE ? " , "%#{term}%" , "%#{term}%" , "%#{term}%")
+  end
+
+   def self.price_range(minimum_price,maximum_price)
+   Listing.where("price >= ? AND price <= ?" ,minimum_price,maximum_price)
+   end
+  
+
 
     def self.tagged_with(name)
     Tag.find_by!(name: name).listings
@@ -23,5 +33,6 @@ class Listing < ApplicationRecord
       Tag.where(name: n.strip).first_or_create!
     end 
   end 
+
 
 end

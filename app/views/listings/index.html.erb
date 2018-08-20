@@ -1,68 +1,65 @@
 <body style=" background-color: #f1f1f1;">
       <div class="container">
 
+                
 
-          <p id="notice"><%= notice %></p>
+       <h1>Listings</h1>
+          
+                 
+                <%= link_to "Clear",listings_path,class:"button__text"%>
 
-          <h1>Listings</h1>
-        <div class="text-center">
-            <%= paginate @listing %>
-            <div class="text-center"></div>
-
-             
+                    <%= render partial:'form_with' %>
+         
+                <%= paginate @listing %>
+       
+              <br>
              <div class="card-deck">
-              <% @listing.each do |listing| %>
-              <div class="row">
-                  <div class="col-sm-3">
-              <div class="card card-cascade" style="width: 20rem;max-height:40rem;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);margin-bottom:20px;">
-              <% if listing.images.count == 0 %>
-               <%= image_tag (["14.jpg","4.jpg","2.jpg","3.jpg"].sample), style:'height:200px;width:20rem;' ,class:"card-img-top" %>
-              <% else %>
-                <% listing.images.each do|image| %>
-              <%= image_tag image.url, style:'height:200px;width:20rem;' ,class:"card-img-top" %>
-                   <% end %>
-              <% end %>
+              <% for listing in @listing %>
+                    <div class="row">
+                        <div class="col-sm-3">
+                    <div class="card card-cascade" style="width: 20rem;max-height:30rem;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);margin-bottom:20px;">
+                    <% if listing.images.count == 0 %>
+                    <%= image_tag (["14.jpg","4.jpg","2.jpg","3.jpg"].sample), style:'height:200px;width:20rem;' ,class:"card-img-top" %>
+                    <% else %>
+                        <% listing.images.each do|image| %>
+                    <%= image_tag image.url, style:'height:200px;width:20rem;' ,class:"card-img-top" %>
+                        <% end %>
+                    <% end %>
                 
             <div class="card-body">
             <tbody>
                 <tr>
                   <h4 class="card-title"><td ><%= listing.name %></td></h4>
                    <hr>
-                  <td><%= listing.price %></td>
-                  <td><%= listing.description %></td>
-                  <td><%= listing.address %></td>
-                  <td><%= listing.country %></td>
-                  <td><%= listing.city %></td>
-                  <td><%= listing.house_rules %></td>
-                  <td><%= listing.property_type %></td>
-                  <td><%= listing.facility %></td>
-                  <td><%= listing.amenity %></td>
-                  <td><%= link_to 'Book Now', listing ,class:"btn btn-primary" %></td>
-                  <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
-                  <td><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                   <p style="font-family: 'Montserrat', sans-serif;">
+                   <td><%= listing.description %></td>
+                  <td><% listing.address %></td>
+                  <td><% listing.country %></td>
+                  <td><% listing.city %></td>
+                  <td><% listing.house_rules %></td>
+                  <td><strong><%= listing.property_type %></strong></td>
+                  <td><% listing.facility %></td>
+                  <td><% listing.amenity %></td>
+                  </p>
+                  <td><p><strong>RM <%=  listing.price %></strong></p></td> 
+                  <div class="text-center">
+                  <td><%= link_to 'Book Now', listing ,class:"btn btn-2"%></td>
+                  </div>
+                  <td><% link_to 'Edit', edit_listing_path(listing) %></td>
+                  <td><%link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
                 </tr>
             </tbody>
             </div>
           </div>
           </div>
           </div>
-              <% end %>
+            <% end %>
           </div>
        
-        
-    <div class="text-center">
-          <%= paginate @listing %>
-    </div>
-
-
           <br>
 
-
-          <%# <p><small>Tags: <%= raw @post.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %>
-
-          <div class = "col-md-2 offset-2">
-
-
-        </div>
+              
+          <%= paginate @listing %>
+  
   </div>
   </body>

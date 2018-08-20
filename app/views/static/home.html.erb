@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-            <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One" rel="stylesheet">
+             <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One" rel="stylesheet">
     </head>
     <body>
        <!--
@@ -14,6 +14,8 @@
     ####################################################
     -->
         <!-- fullscreen -->
+
+                    <%= render partial:'sticky' %>  
 
         <div id="carousel-example-generic2" class="carousel slide carousel-fullscreen carousel-fade" data-ride="carousel">
             <!-- Indicators -->
@@ -29,7 +31,7 @@
                     <div class="overlay"></div>
                     <div class="carousel-caption">
                      <h1 class="super-heading">Travel With AirBnB</h1>
-                       <a href="/listings" class="btn btn-default">Go Now</a>
+                       <a href="/listings" class="btn btn-outline-secondary" style=" border-color: #fff;border-width: 0.18rem;">Go Now</a>
                     
                     </div>
                 </div>
@@ -38,14 +40,14 @@
                     <div class="carousel-caption">
                         <h3 class="super-heading">With your loved ones</h3>
                        <%# <a href="/listings" class="btn btn-outline-light">Go Now</a> %>
-                      <%= link_to "Go Now",listings_path,class:"btn btn-default"%>
+                      <%= link_to "Go Now",listings_path,class:"btn btn-outline-secondary" ,style:" border-color: #fff;border-width: 0.18rem;" %>
                     </div>
                 </div>
                 <div class="item" style="background-image: url(<%= asset_path ["10.jpg","2.jpg","14.jpg","3.jpg"].sample %>);">
                     <div class="overlay"></div>
                     <div class="carousel-caption">
                         <h1 class="super-heading">To any places</h1>
-                       <a href="/listings" class="btn btn-default">Go Now</a>
+                         <a href="/listings" class="btn btn-outline-secondary" style=" border-color: #fff;border-width: 0.18rem;">Go Now</a>
                     </div>
                 </div>
             </div>
