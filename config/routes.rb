@@ -1,6 +1,17 @@
 Rails.application.routes.draw do
+
+  require 'sidekiq/web'
+  mount Sidekiq::Web => 'sidekiq'
+  root 'static#home'
+  
+  resources :braintree
+  post 'braintree/checkout'
+  
+  resources :reservations
+  get "static/random"
   resources :listings
-  root 'listings#home'
+
+
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 
   get 'tags/:tag', to: 'listings#index', as: :tag

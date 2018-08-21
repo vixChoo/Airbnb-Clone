@@ -1,9 +1,17 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @listing.name %>
-</p>
+<div class="container" style="">
+<div class="row">
+<div class="card border-info mb-3" style="max-width: 30rem;">
+<div class="card-header bg-transparent border-info">
+      <h5 class="card-title">       
+            <strong>Name:</strong>
+            <%= @listing.name %>
+         
+      </h5>
+</div>
+
+  <div class="card-body text-info">
+  
 
 <p>
   <strong>Price:</strong>
@@ -49,6 +57,23 @@
   <strong>Amenity:</strong>
   <%= @listing.amenity %>
 </p>
+</div>
+ <div class="card-footer border-info">
+        <%= link_to 'Edit', edit_listing_path(@listing) %> 
+        <%=link_to 'Destroy', @listing, method: :delete, data: { confirm: 'Are you sure?' } %>
+ 
+</div>
+</div>
+<div class="col-md-6 ml-auto">
+<div class="card text-center">
+  <div class="card-header">
+    <h1>New Reservation</h1>
+  </div>
+          <%= render partial: 'reservations/form', reservation: @reservation %>
+          <%= link_to 'Back', listings_path %>
+          </div>
+</div>
 
-<%= link_to 'Edit', edit_listing_path(@listing) %> |
-<%= link_to 'Back', listings_path %>
+</div>
+</div>
+

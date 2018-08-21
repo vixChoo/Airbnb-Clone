@@ -47,19 +47,15 @@ GEM
     archive-zip (0.11.0)
       io-like (~> 0.3.0)
     arel (9.0.0)
-    autoprefixer-rails (9.1.1)
-      execjs
     bcrypt (3.1.12)
     bindex (0.5.0)
     bootsnap (1.3.1)
       msgpack (~> 1.0)
-    bootstrap (4.1.3)
-      autoprefixer-rails (>= 6.0.3)
-      popper_js (>= 1.12.9, < 2)
-      sass (>= 3.5.2)
+    braintree (2.90.0)
+      builder (>= 2.0.0)
     builder (3.2.3)
     byebug (10.0.2)
-    capybara (3.5.1)
+    capybara (3.6.0)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (~> 1.8)
@@ -87,6 +83,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
+    connection_pool (2.2.2)
     crass (1.0.4)
     email_validator (1.6.0)
       activemodel
@@ -127,10 +124,6 @@ GEM
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
-    jquery-rails (4.3.3)
-      rails-dom-testing (>= 1, < 3)
-      railties (>= 4.2.0)
-      thor (>= 0.14, < 2.0)
     jwt (1.5.6)
     kaminari (1.1.1)
       activesupport (>= 4.1.0)
@@ -160,7 +153,7 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2018.0812)
     mimemagic (0.3.2)
-    mini_mime (1.0.0)
+    mini_mime (1.0.1)
     mini_portile2 (2.3.0)
     minitest (5.11.3)
     msgpack (1.2.4)
@@ -187,10 +180,11 @@ GEM
       oauth2 (~> 1.1)
       omniauth (~> 1.2)
     pg (1.0.0)
-    popper_js (1.14.3)
-    public_suffix (3.0.2)
+    public_suffix (3.0.3)
     puma (3.12.0)
     rack (2.0.5)
+    rack-protection (2.0.3)
+      rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.2.1)
@@ -221,6 +215,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
+    redis (4.0.2)
     ruby_dep (1.5.0)
     rubyzip (1.2.1)
     sass (3.5.7)
@@ -237,6 +232,10 @@ GEM
     selenium-webdriver (3.14.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2)
+    sidekiq (5.2.1)
+      connection_pool (~> 2.2, >= 2.2.2)
+      rack-protection (>= 1.5.0)
+      redis (>= 3.3.5, < 5)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -252,9 +251,9 @@ GEM
     thor (0.20.0)
     thread_safe (0.3.6)
     tilt (2.0.8)
-    turbolinks (5.1.1)
-      turbolinks-source (~> 5.1)
-    turbolinks-source (5.1.0)
+    turbolinks (5.2.0)
+      turbolinks-source (~> 5.2)
+    turbolinks-source (5.2.0)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     uglifier (4.1.18)
@@ -275,7 +274,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap (>= 1.1.0)
-  bootstrap (~> 4.1, >= 4.1.3)
+  braintree
   byebug
   capybara (>= 2.15, < 4.0)
   carrierwave (~> 1.0)
@@ -286,20 +285,18 @@ DEPENDENCIES
   figaro
   fog-aws
   jbuilder (~> 2.5)
-  jquery-rails (~> 4.3, >= 4.3.3)
   kaminari
   listen (>= 3.0.5, < 3.2)
   omniauth
   omniauth-google-oauth2
   pg (>= 0.18, < 2.0)
-  popper_js (~> 1.14, >= 1.14.3)
   puma (~> 3.11)
   rails (~> 5.2.0)
   sass-rails (~> 5.0)
   selenium-webdriver
+  sidekiq (~> 5.2, >= 5.2.1)
   spring
   spring-watcher-listen (~> 2.0.0)
-  sprockets-rails (~> 3.2, >= 3.2.1)
   turbolinks (~> 5)
   tzinfo-data
   uglifier (>= 1.3.0)

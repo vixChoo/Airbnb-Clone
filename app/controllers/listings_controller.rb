@@ -2,8 +2,29 @@ class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
 
   def index
-    params[:tag] ? @listing = Listing.tagged_with(params[:tag]) : @listing = Listing.all.order(created_at: :desc).page(params[:page])
-  end
+    if params[:term] && params[:minimum_price] && params[:maximum_price]
+
+     @listing = Listing.price_range(params[:minimum_price],params[:maximum_price]).page(params[:page]) && Listing.search(params[:term].downcase).page(params[:page])
+     
+    elsif params[:term]
+      @listing = Listing.search(params[:term].downcase).page(params[:page])
+      
+    elsif params[:minimum_price] && params[:maximum_price]
+      @listing = Listing.price_range(params[:minimum_price],params[:maximum_price]).page(params[:page])
+    else
+      @listing = Listing.all.order(created_at: :desc).page(params[:page])
+    end
+    
+    respond_to do |format|    
+        format.html {render :index }
+        format.js
+    end
+    end
+        
+
+ 
+ 
+
   # GET /listings
   # GET /listings.json
   # def index
@@ -15,11 +36,21 @@ class ListingsController < ApplicationController
   
 
   def show
+     if signed_in?
+      @reservation = Reservation.new
+      else
+        redirect_to sign_in_path, info: 'Sign in to book a room.'
+
+    end
   end
 
   # GET /listings/new
   def new
-    @listing = Listing.new
+    if signed_in?
+      @listing = Listing.new
+      else
+      redirect_to sign_in_path, info: 'Sign in to create a list.'
+    end
   end
 
   # GET /listings/1/edit
@@ -34,7 +65,7 @@ class ListingsController < ApplicationController
     
     respond_to do |format|
       if @listing.save
-        format.html { redirect_to @listing, notice: 'Listing was successfully created.' }
+        format.html { redirect_to @listing, success: 'Listing was successfully created.' }
         format.json { render :show, status: :created, location: @listing }
       else
         format.html { render :new }
@@ -48,7 +79,7 @@ class ListingsController < ApplicationController
   def update
     respond_to do |format|
       if @listing.update(listing_params)
-        format.html { redirect_to @listing, notice: 'Listing was successfully updated.' }
+        format.html { redirect_to @listing, success: 'Listing was successfully updated.' }
         format.json { render :show, status: :ok, location: @listing }
       else
         format.html { render :edit }
@@ -62,7 +93,7 @@ class ListingsController < ApplicationController
   def destroy
     @listing.destroy
     respond_to do |format|
-      format.html { redirect_to listings_url, notice: 'Listing was successfully destroyed.' }
+      format.html { redirect_to listings_url, success: 'Listing was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -75,7 +106,7 @@ class ListingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
-      params.require(:listing).permit(:name, :price, :description, :address, :country, :city, :house_rules,
-         :property_type, :facility, :amenity,{images: []},:tag_list, :tag, { tag_ids: [] }, :tag_ids)
+      params.require(:listing).permit(:name, :price, :minimum_price, :maximum_price,:description, :address, :country, :city, :house_rules,
+         :property_type, :facility, :amenity,:term ,{images: []},:tag_list, :tag, { tag_ids: [] }, :tag_ids)
     end
 end
