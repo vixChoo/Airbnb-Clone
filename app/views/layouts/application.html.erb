@@ -15,11 +15,14 @@
 
 
 
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     
   </head> 
+
+  <body>
 
                               <% unless current_page?(root_path) %>
                               <div class="container-fluid" style="font-family: 'Julius Sans One', sans-serif;"> 
@@ -29,7 +32,7 @@
                     
                               <% if flash.present? %>
                                     <% flash.each do |name, msg| %>
-                                      <div class="alert alert-<%= name %> fade in" role="alert">
+                                      <div class="alert alert-<%= name %> text-center" role="alert">
                                       <%= msg %>
                                       </div>
                                     <% end %>

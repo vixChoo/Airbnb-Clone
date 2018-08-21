@@ -1,5 +1,5 @@
 class Listing < ApplicationRecord
-   has_many :taggings
+   has_many :taggings, dependent: :destroy
    has_many :reservations, dependent: :destroy
    has_many :tags, through: :taggings
    belongs_to :user
@@ -7,7 +7,7 @@ class Listing < ApplicationRecord
    mount_uploaders :images, ImageUploader
 
    def self.search(term)
-    Listing.where("name LIKE ? OR description LIKE ? OR address LIKE ? " , "%#{term}%" , "%#{term}%" , "%#{term}%")
+    Listing.where("lower(name) LIKE ? OR lower(description) LIKE ? OR lower(address) LIKE ? " , "%#{term}%" , "%#{term}%" , "%#{term}%")
   end
 
    def self.price_range(minimum_price,maximum_price)

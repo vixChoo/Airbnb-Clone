@@ -1,7 +1,7 @@
 
 
  
- <%= form_with url: listings_path, method: :get, local: true do |f| %>
+ <%= form_with url: listings_path, remote:true,method: :get, local: true do |f| %>
 
 
 
@@ -21,11 +21,12 @@
             <% end %>
 
               
-           <%= form_with url: listings_path, method: :get, local: true do |f| %>
-             <%= f.text_field :term, placeholder:"City?",value: params[:term] %>
+           <%= form_with url: listings_path, method: :get, remote: true do |f| %>
+             <%= f.text_field :term, placeholder:"City?",value: params[:term] ,id:"myInput"%>
                 <%= f.submit "Search", name: '',class:"btn btn-4"%>
          
            <% end %> 
+    
     
     <style>
 
@@ -33,3 +34,14 @@
 
 /* Magic Stuff End -> */
     </style>
+
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>

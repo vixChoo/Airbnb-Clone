@@ -16,7 +16,7 @@ class ReservationsController < ApplicationController
     if signed_in?
       @reservation = Reservation.new
       else
-        redirect_to sign_in_path, notice: 'Sign in to book a room.'
+        redirect_to sign_in_path, info: 'Kindly sign in to book a room.'
 
     end
   end

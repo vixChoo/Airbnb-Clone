@@ -1,46 +1,52 @@
-    		
-            <div  class="container-fluid">
-            <nav class="navbar navbar-expand-lg bg-transparent navbar-light fixed-top" style="background-color: #e3f2fd;">
+<div class="container-fluid" style="font-family: 'Montserrat', sans-serif;">
+	<div class="nav_bar">    		
+            <nav class="navbar navbar-expand-lg bg-transparent navbar-light fixed-top" >
 				
-						<!-- Brand/logo -->
-										
-								<%= link_to image_tag("pink.png", alt: "logo",style:"width:100px;padding-top:0px;", title:"Home"), '/', class: 'navbar-brand' %>
-								   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" style="background-color: white;" aria-label="Toggle navigation">
-                      <span class="navbar-toggler-icon" ></span>
-                  </button>
-				 		  
-						<!-- Links -->
-          <div class="collapse navbar-collapse" id="navbarSupportedContent"    >
-         		 <ul class="navbar-nav ml-auto navbar-right" style="margin-top:10px;"   >
+					<!-- Brand/logo -->
+									
+				<%= link_to image_tag("pink.png", alt: "logo",style:"width:100px;padding-top:0px;", title:"Home"), '/', class: 'navbar-brand' %>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" style="background-color: white;" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon" ></span>
+				</button>
+						
+					<!-- Links -->
+			<div class="collapse navbar-collapse" id="navbarSupportedContent"    >
+				<ul class="navbar-nav ml-auto navbar-right" style="margin-top:10px;"   >
 
-               <li class="nav-item active ">
-								<% if signed_in? %>
-									<%= link_to 'Become a Host' ,new_listing_path , class:"nav-link",style:"color: white;"%> <span class="sr-only">(current)</span></li>
+			<li class="nav-item active ">
+				<% if signed_in? %>
+					<%= link_to 'Become a Host' ,new_listing_path , class:"nav-link",style:"color: white;"%> <span class="sr-only">(current)</span></li>
+					<li><%= link_to 'Sign out', sign_out_path, method: :delete  , class:"nav-link",style:"color: white;"%></li>
 													
-         			 <li><%= link_to 'Sign out', sign_out_path, method: :delete  , class:"nav-link",style:"color: white;"%></li>
 
-									  <% end %>
-
-								<li class="nav-item">
-                <%= link_to 'Sign in', sign_in_path  , class:"nav-link",style:"color: white;"%></li>					
-								<li class="nav-item" >
-                <%= link_to "Sign in with Google", "/auth/google_oauth2"  , class:"nav-link",style:"color: white;"%></li>					
+				<% else %>
+				<li class="nav-item">
+					<%= link_to 'Sign in', sign_in_path  , class:"nav-link",style:"color: white;"%></li>					
+				<% end %>
+			
 
 	
-						</ul>
-				</div>
+					</ul>
+			</div>
 		</nav>
 
-				</div>
+	</div>
+</div>
+
+ 
+
+
+
 <style>
+
 .navbar{
-    z-index:999;
-    margin-bottom:-20px;
-    
+	z-index:999;
+	margin-bottom:-20px;
+	
+	
 }
 .navbar-expand-lg .navbar-toggle .navbar-toggler-icon {
-    background-color: black;
+	background-color: black;
 }
-    
-</style>
 
+</style>
