@@ -1,3 +1,7 @@
+
+
+
+
 <%= form_with(model: @listing, local: true) do |form| %>
   <% if @listing.errors.any? %>
     <div id="error_explanation">
@@ -11,10 +15,18 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+<div class="card border-primary mb-3" style="width:50rem;">
+<div class="card-header bg-transparent border-info">
+
+    <h5 class="card-title">       
+      <div class="field">
+        <%= form.label :name %>
+        <%= form.text_field :name %>
+      </div>
+      </h5>
+</div>
+
+  <div class="card-body text-info">
 
   <div class="field">
     <%= form.label :price %>
@@ -67,7 +79,11 @@
     <%= form.file_field :images, multiple: true %>
   </div>
 
+</div>
+<div class="card-footer border-info text-center"> 
   <div class="actions">
     <%= form.submit %>
   </div>
+</div>
 <% end %>
+

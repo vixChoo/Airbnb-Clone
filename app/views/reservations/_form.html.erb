@@ -1,5 +1,9 @@
+<div class="container">
+<div class="row">
+
+<div class="card-body text-dark">
 <%= form_with(model: @reservation, local: true) do |form| %>
-      
+<div class="card-text">
     <div class="field">
     <%= form.label :status %>
     <%= form.number_field :status %>
@@ -13,6 +17,7 @@
     <%= form.label :end_date %>
     <%= form.date_select :end_date %>
   </div>
+</div>
 
 <%= form.hidden_field :listing_id, value: @listing.id %>
 
@@ -20,3 +25,7 @@
     <%= form.submit %>
   </div>
 <% end %>
+
+  </div>
+  </div>
+  </div>
