@@ -5,7 +5,7 @@
               <% for listing in @listing %>
                     <div class="row">
                         <div class="col-sm-3">
-                    <div class="card card-cascade" style="width: 20rem;max-height:30rem;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);margin-bottom:20px;">
+                    <div class="card card-cascade" style="width: 20rem;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);margin-bottom:20px;">
                     <% if listing.images.count == 0 %>
                     <%= image_tag (["14.jpg","4.jpg","2.jpg","3.jpg"].sample), style:'height:200px;width:20rem;' ,class:"card-img-top" %>
                     <% else %>
@@ -31,7 +31,7 @@
                   <td><strong><%= listing.property_type %></strong></td>
                   <td><p><strong>RM <%=  listing.price %></strong></p></td> 
                   <div class="text-center">
-                  <td><%= link_to 'Book Now', listing ,class:"btn btn-2"%></td>
+                  <td><%= link_to 'Book Now', listing ,class:["btn btn-1","btn btn-3","btn btn-4","btn btn-2","btn btn-2","btn btn-2"].sample%></td>
                   </div>
                   <td><% link_to 'Edit', edit_listing_path(listing) %></td>
                   <td><%link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -45,6 +45,7 @@
           </div>
        
           <br>
+
 
               
 <%= paginate @listing %>

@@ -1,71 +1,214 @@
 
-<html>
-    <head>
-     
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-             <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One" rel="stylesheet">
-    </head>
-    <body>
-       <!--
-    ####################################################
-    C A R O U S E L
-    ####################################################
-    -->
-        <!-- fullscreen -->
+<!DOCTYPE html>
+<html lang="en">
 
-                    <%= render partial:'sticky' %>  
+<head>
 
-        <div id="carousel-example-generic2" class="carousel slide carousel-fullscreen carousel-fade" data-ride="carousel">
-            <!-- Indicators -->
-            <ol class="carousel-indicators">
-                <li data-target="#carousel-example-generic2" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-example-generic2" data-slide-to="1"></li>
-                <li data-target="#carousel-example-generic2" data-slide-to="2"></li>
-            </ol>
-            
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner" role="listbox">
-                <div class="item active" style="background-image: url(<%= asset_path ["13.jpg","4.jpg","5.jpg"].sample %>);">
-                    <div class="overlay"></div>
-                    <div class="carousel-caption">
-                     <h1 class="super-heading">Travel With AirBnB</h1>
-                       <a href="/listings" class="btn btn-outline-secondary" style=" border-color: #fff;border-width: 0.18rem;">Go Now</a>
-                    
-                    </div>
-                </div>
-                <div class="item" style="background-image: url(<%= asset_path ["0.jpg","6.jpg","12.jpg","7.jpg","8.jpg","9.jpg"].sample %>);">
-                    <div class="overlay"></div>
-                    <div class="carousel-caption">
-                        <h3 class="super-heading">With your loved ones</h3>
-                       <%# <a href="/listings" class="btn btn-outline-light">Go Now</a> %>
-                      <%= link_to "Go Now",listings_path,class:"btn btn-outline-secondary" ,style:" border-color: #fff;border-width: 0.18rem;" %>
-                    </div>
-                </div>
-                <div class="item" style="background-image: url(<%= asset_path ["10.jpg","2.jpg","14.jpg","3.jpg"].sample %>);">
-                    <div class="overlay"></div>
-                    <div class="carousel-caption">
-                        <h1 class="super-heading">To any places</h1>
-                         <a href="/listings" class="btn btn-outline-secondary" style=" border-color: #fff;border-width: 0.18rem;">Go Now</a>
-                    </div>
-                </div>
-            </div>
+  <style type="text/css">
+    /* Navigation*/
+    .navbar {
+      background-color: transparent;
+    }
+ 
+    .top-nav-collapse {
+      background-color: #667490;
+    }
+    @media only screen and (max-width: 768px) {
+      .navbar {
+        background-color: #667490;
+        opacity:0.8;
+      }
 
-            <!-- Controls -->
-            <a class="left carousel-control" href="#carousel-example-generic2" role="button" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#carousel-example-generic2" role="button" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
+      h1,h2,h3,h4 {
+    font-weight: 500;
+    }
+
+    .super-heading {
+    font-family: 'Julius Sans One', sans-serif;
+        font-size: 40px; 
+    }
+    }
+
+    /* Necessary for full page carousel*/
+    html,
+    body,
+    .view {
+      height: 100%;
+    }
+
+    /* Carousel*/
+    .carousel,
+    .carousel-item,
+    .carousel-item.active {
+      height: 100%;
+    }
+    .carousel-inner {
+      height: 100%;
+    }
+    .carousel-item:nth-child(1) {
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+    }
+    .carousel-item:nth-child(2) {
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+    }
+    .carousel-item:nth-child(3) {
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+    }
+    
+  </style>
+</head>
+
+<body>
+
+  <!--Navbar-->
+  <nav class="navbar navbar-expand-lg navbar-dark scrolling-navbar fixed-top">
+
+    <!-- Navbar brand -->
+    <a class="navbar-brand" href="#">Navbar</a>
+
+    <!-- Collapse button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="basicExampleNav">
+
+      <!-- Links -->
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home
+              <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Pricing</a>
+        </li>
+        <!-- Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+          <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+      </ul>
+      <!-- Links -->
+
+      <form class="form-inline">
+        <div class="md-form my-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
         </div>
+      </form>
+    </div>
+    <!-- Collapsible content -->
 
-      
+  </nav>
+  <!--/.Navbar-->
 
-        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    </body>
+  <!--Carousel Wrapper-->
+  <div id="carousel-example-1" class="carousel slide carousel-fade" data-ride="carousel">
+
+    <!--Indicators-->
+    <ol class="carousel-indicators">
+      <li data-target="#carousel-example-1" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel-example-1" data-slide-to="1"></li>
+      <li data-target="#carousel-example-1" data-slide-to="2"></li>
+    </ol>
+    <!--/.Indicators-->
+
+    <!--Slides-->
+    <div class="carousel-inner" role="listbox">
+    
+
+      <!--First slide-->
+      <div class="carousel-item active">
+        <!--Mask-->
+        <div class="view">
+          <div class="full-bg-img flex-center mask rgba-indigo-light white-text"  style="background-image: url(<%= asset_path ["13.jpg","4.jpg","15.jpg"].sample %>);">
+            <div class="overlay"></div>
+            <ul class="animated fadeInUp col-md-12 list-unstyled list-inline">
+              <li>
+                 <h3 class="super-heading">Travel With AirBnB</h3>
+              </li>
+            <li>
+                <a href="/listings" class="btn btn-outline waves-effect" style="color: #fff!important;border-color: #fff!important;border-width: 0.18rem!important;">Go Now</a>
+            </li>            
+            </ul>
+          </div>
+        </div>
+        <!--/.Mask-->
+      </div>
+      <!--/.First slide-->
+
+      <!--Second slide -->
+      <div class="carousel-item">
+        <!--Mask-->
+        <div class="view">
+          <div class="full-bg-img flex-center mask rgba-purple-light white-text" style="background-image: url(<%= asset_path ["0.jpg","6.jpg","12.jpg","7.jpg","8.jpg","9.jpg"].sample %>);" >
+            <div class="overlay"></div>
+                <ul class="animated fadeInUp col-md-12 list-unstyled">
+                <li>
+                <p class="super-heading">With your loved ones</p>
+              </li>
+              <li>
+               <%= link_to "Go Now",listings_path,class:"btn btn-outline" ,style:"color: #fff; border-color: #fff;border-width: 0.18rem;" %>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!--/.Mask-->
+      </div>
+      <!--/.Second slide -->
+
+      <!--Third slide-->
+      <div class="carousel-item">
+        <!--Mask-->
+        <div class="view">
+          <div class="full-bg-img flex-center mask rgba-blue-light white-text"  style="background-image: url(<%= asset_path ["10.jpg","2.jpg","14.jpg","3.jpg"].sample %>);">
+            <div class="overlay"></div>
+            <ul class="animated fadeInUp col-md-12 list-unstyled">              
+              <li>
+                 <p class="super-heading">To any places</p>
+                </li>
+              <li>
+                    <a href="/listings" class="btn btn-outline" style="color: #fff; border-color: #fff;border-width: 0.18rem;">Go Now</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!--/.Mask-->
+      </div>
+      <!--/.Third slide-->
+
+    </div>
+    <!--/.Slides-->
+
+    <!--Controls-->
+    <a class="carousel-control-prev" href="#carousel-example-1" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carousel-example-1" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+    <!--/.Controls-->
+  </div>
+  <!--/.Carousel Wrapper-->
+  
+
+
+</body>
+
 </html>

@@ -1,0 +1,22 @@
+<div class="container" style="">
+<div class="row">
+
+  <%= render partial:'application/navprofile' %>
+  <div class="row justify-content-center">
+<div class="col-12 col-md-8">
+      <% if current_user.avatar.present? %>
+            <%= image_tag current_user.avatar.url,class:"img-thumbnail"%>
+      <% end %>
+</div>
+<div class="col-12 text-center">
+
+      <% if current_user.admin? %>
+           <h1>HI <%= current_user.first_name%> Admin!</h1>
+           <h5>Welcome back to work</h5>
+      <% end %>
+    
+</div>
+
+</div>
+</div>
+</div>

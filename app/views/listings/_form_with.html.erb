@@ -17,13 +17,13 @@
                 <%= f.number_field :maximum_price,placeholder:"MAX", value:100000  %>
         <% end %>
 
-                <%= f.submit "Search", name: '',class:"btn btn-outline-success my-2 my-sm-0" %>
+                <%= f.submit "Search", name: '',class:"btn btn-mdb-color" %>
             <% end %>
 
               
            <%= form_with url: listings_path, method: :get, remote: true do |f| %>
              <%= f.text_field :term, placeholder:"City?",value: params[:term] ,id:"myInput"%>
-                <%= f.submit "Search", name: '',class:"btn btn-4"%>
+                <%= f.submit "Search", name: '',class:"btn btn-default btn-rounded"%>
          
            <% end %> 
     

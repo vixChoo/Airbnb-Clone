@@ -1,65 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-<body>
+<!--Modal: Login with Avatar Form-->
+<div class="modal fade" id="modalLoginAvatar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog cascading-modal modal-avatar modal-sm" role="document">
+        <!--Content-->
+        <div class="modal-content">
 
-<div class="container">
-  <h2>Filterable Table</h2>
-  <p>Type something in the input field to search the table for first names, last names or emails:</p>  
-  <input class="form-control" id="myInput" type="text" placeholder="Search..">
-  <br>
-  <table class="table table-bordered table-striped">
-    <thead>
-      <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Email</th>
-      </tr>
-    </thead>
-    <tbody id="myTable">
-      <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-      </tr>
-      <tr>
-        <td>Mary</td>
-        <td>Moe</td>
-        <td>mary@mail.com</td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@greatstuff.com</td>
-      </tr>
-      <tr>
-        <td>Anja</td>
-        <td>Ravendale</td>
-        <td>a_r@test.com</td>
-      </tr>
-    </tbody>
-  </table>
-  
-  <p>Note that we start the search in tbody, to prevent filtering the table headers.</p>
+            <!--Header-->
+            <div class="modal-header">
+                <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20%281%29.jpg" alt="avatar" class="rounded-circle img-responsive">
+            </div>
+            <!--Body-->
+            <div class="modal-body text-center mb-1">
+
+                <h5 class="mt-1 mb-2">Maria Doe</h5>
+
+                <div class="md-form ml-0 mr-0">
+                    <input type="password" type="text" id="form29" class="form-control form-control-sm validate ml-0">
+                    <label data-error="wrong" data-success="right" for="form29" class="ml-0">Enter password</label>
+                </div>
+
+                <div class="text-center mt-4">
+                    <button class="btn btn-cyan mt-1">Login <i class="fa fa-sign-in ml-1"></i></button>
+                </div>
+            </div>
+
+        </div>
+        <!--/.Content-->
+    </div>
 </div>
+<!--Modal: Login with Avatar Form-->
 
-<script>
-$(document).ready(function(){
-  $("#myInput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#myTable tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
-</script>
-
-</body>
-</html>
+<div class="text-center">
+    <a href="" class="btn btn-default btn-rounded" data-toggle="modal" data-target="#modalLoginAvatar">Launch Modal Login with Avatar</a>
+</div>
