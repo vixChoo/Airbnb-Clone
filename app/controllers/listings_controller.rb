@@ -93,7 +93,7 @@ class ListingsController < ApplicationController
   def destroy
     @listing.destroy
     respond_to do |format|
-      format.html { redirect_to listings_url, success: 'Listing was successfully destroyed.' }
+      format.html { redirect_back fallback_location: listings_url, danger: 'Listing was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -101,11 +101,7 @@ class ListingsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_listing
-        unless current_user
-          @listing = Listing.find(params[:id])
-      else
-          @listing = current_user.listings.find(params[:id])
-      end
+          @listing = Listing.find(params[:id])     
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

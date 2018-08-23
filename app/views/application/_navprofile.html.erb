@@ -1,26 +1,51 @@
-<ul class="nav nav-tabs">
-  <li class="nav-item">
-    <a class="nav-link active" href="#">Profile</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Your Listings</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Your </a>
-  </li>
+<div class="container">
+<ul class="nav nav-tabs" id="myTab" role="tablist">
 
-      <% if current_user.admin? %>         
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Admin</a>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">Users</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Listings</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Separated link</a>
-            </div>
-          </li>
-      <% end %>
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Profile</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Lisitngs</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+  </li>
 </ul>
-     
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+    <div class="row justify-content-center">
+            <div class="col-12 col-md-6">
+            <br>
+            <% if current_user.avatar.present? %>
+                  <%= image_tag current_user.avatar.url,class:"img-thumbnail"%>
+            <% end %>
+            </div>
 
+          <div class="col-12 text-center">
+            <% if current_user.admin? %>
+                <h1>HI <%= current_user.first_name%> Admin!</h1>
+                <h5>Welcome back to work</h5>
+            <% end %>
+             <br>
+        </div>
+    </div>
+ </div>
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+    <br>
+    <% if current_user.listings.present? %>
+          <% current_user.listings.each do |listing|%>
+            <h1><%= listing.name%></h1>
+          <% end %>
+    <% else %>
+    Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.
+    <% end %>
+    <br>
+  </div>
+  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab"> 
+      <br>
+      <% if current_user.admin? || current_user.host? %>         
+              <p><%= link_to 'Admin', admin_users_path %></p>
+      <% end %>
+       <br>
+  </div>
+</div>

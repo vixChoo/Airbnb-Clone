@@ -5,14 +5,14 @@
 .container{
     font-family: 'Julius Sans One', sans-serif;
 }
-
+ 
 .btn:hover {
   background-position: right center; /* change the direction of the change here */
   color:black;
 }
 
 
-.btn-4 , .btn-2 , .btn-3 ,.btn-1,.btn-5 {
+.btn-4 ,.btn-2 , .btn-3 ,.btn-1,.btn-5 {
   background-image: linear-gradient(to right, #a1c4fd 0%, #c2e9fb 51%, #a1c4fd 100%);
   flex: 1 1 auto;
   text-align: center;

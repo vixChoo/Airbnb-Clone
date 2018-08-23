@@ -20,7 +20,7 @@
                   <h4 class="card-title"><td ><%= listing.name %></td></h4>
                    <hr>
                    <p style="font-family: 'Montserrat', sans-serif;">
-                   <td><%= listing.description %></td>
+                  <td><%= listing.description %></td>
                   <td><% listing.address %></td>
                   <td><% listing.country %></td>
                   <td><% listing.city %></td>
@@ -34,7 +34,7 @@
                   <td><%= link_to 'Book Now', listing ,class:["btn btn-1","btn btn-3","btn btn-4","btn btn-2","btn btn-2","btn btn-2"].sample%></td>
                   </div>
                   <td><% link_to 'Edit', edit_listing_path(listing) %></td>
-                  <td><%link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                  <td><%=link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
                 </tr>
             </tbody>
             </div>
