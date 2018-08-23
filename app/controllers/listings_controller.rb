@@ -14,6 +14,10 @@ class ListingsController < ApplicationController
     else
       @listing = Listing.all.order(created_at: :desc).page(params[:page])
     end
+
+    if params[:tag]
+    @listing = Listing.tagged_with(params[:tag]).page(params[:page])
+    end
     
     respond_to do |format|    
         format.html {render :index }

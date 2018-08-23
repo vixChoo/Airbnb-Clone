@@ -21,6 +21,22 @@ class AdminController < ApplicationController
         end
     end
      
+    
+         def make_admin
+            if current_user.admin? || current_user.host?
+              set_users
+                @user.admin!
+             redirect_to admin_users_path , success: " #{@user.first_name} #{@user.last_name} is an admin now"
+           end
+         end
+         
+         def destroy_admin
+            if current_user.admin? || current_user.host?
+                set_users
+             @user.member!
+             redirect_to admin_users_path , warning: " #{@user.first_name} #{@user.last_name} is an member now"
+           end
+         end
         
      def listings
         if current_user.admin? || current_user.host?
@@ -47,26 +63,12 @@ class AdminController < ApplicationController
         end
      end
 
-     def make_admin
-        if current_user.admin? || current_user.host?
-         @user.admin!
-         redirect_to admin_users_path , success: " #{@user.first_name} #{@user.last_name} is an admin now"
-       end
-     end
-     
-     def destroy_admin
-        if current_user.admin? || current_user.host?
-         @user.member!
-         redirect_to admin_users_path , warning: " #{@user.first_name} #{@user.last_name} is an member now"
-       end
-     end
-
     
 
      private
      
      def set_users
-        @user = User.find(params[:id])   
+        @user = User.find(params[:id])
     end
      def set_tag
         @tag = Tag.find(params[:id])   

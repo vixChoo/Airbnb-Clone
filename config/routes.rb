@@ -15,8 +15,8 @@ Rails.application.routes.draw do
   get 'admin/reservations' => 'admin#reservations'
   get 'admin/tags' => 'admin#tags'
 
-  post 'admin/users/:id/make_admin' => 'admin#make_admin', :as => "make_admin"
-  post 'admin/users/:id/destroy_admin' => 'admin#destroy_admin', :as => "destroy_admin"
+  get 'admin/users/:id/make_admin' => 'admin#make_admin', :as => "make_admin"
+  get 'admin/users/:id/destroy_admin' => 'admin#destroy_admin', :as => "destroy_admin"
   # delete   'admin/listings/:id/destroy_listing' => 'admin#destroy_listing', :as => "destroy_listing"
 
 

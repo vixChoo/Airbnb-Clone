@@ -32,7 +32,7 @@
             <td><%= user.last_name %></td>
             <td><%= user.role %></td>
  
-        <% if user.admin?%>  
+        <% if user.admin? || user.host?%>  
                 <td><%= link_to "Disable Admin", destroy_admin_path(user.id),data: { confirm: 'Are you sure?' }%></td></td>
             <% else %>
                 <td><%= link_to "Make Admin", make_admin_path(user.id),data: { confirm: 'Are you sure?' }%></td>
