@@ -1,5 +1,11 @@
+ <br>
+
+ 
+
  <%= paginate @listing %>
-       
+
+
+
               <br>
              <div class="card-deck" >
               <% for listing in @listing %>
@@ -10,7 +16,7 @@
                     <%= image_tag (["14.jpg","4.jpg","2.jpg","3.jpg"].sample), style:'height:200px;width:20rem;' ,class:"card-img-top" %>
                     <% else %>
                         <% listing.images.each do|image| %>
-                    <%= image_tag image.url, style:'height:200px;width:20rem;' ,class:"card-img-top" %>
+                      <%= image_tag image.url, style:'height:200px;width:20rem;' ,class:"card-img-top" %>
                         <% end %>
                     <% end %>
                 

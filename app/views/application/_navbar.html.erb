@@ -27,20 +27,20 @@
 
 						
         <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="profile-photo dropdown-toggle nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								<% if signed_in? %>
 
-                  <% if current_user.avatar.present? %>
-                      <%= image_tag current_user.avatar.url,width:"28",height:"28", class:"rounded-circle img-responsive"%>                              
-                      <% else %>
-                      
-                          <%= current_user.first_name %>
-                  <% end %>
+                    <% if current_user.avatar.present? %>
+                        <div class="profile-photo-small">
+                        <%= image_tag current_user.avatar.url, alt:"Circle Image" ,class:"rounded-circle img-fluid"%>           
+                        </div>
+                        <% else %>                      
+                            <%= current_user.first_name %>
+                    <% end %>
                 <% else %>
                     Profile
                 <% end %>
-        </a>
-  
+              </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
                   <%= link_to 'Listings',listings_path, class:"dropdown-item"%>
@@ -72,6 +72,11 @@
 </nav>
 </div>
 </div>
+                       
+                  
+          
+
+  
 
 <style>
 

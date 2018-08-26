@@ -7,11 +7,11 @@ class Listing < ApplicationRecord
    mount_uploaders :images, ImageUploader
 
    def self.search(term)
-    Listing.where("lower(name) LIKE ? OR lower(description) LIKE ? OR lower(address) LIKE ? " , "%#{term}%" , "%#{term}%" , "%#{term}%")
+    self.where("lower(name) LIKE ? OR lower(description) LIKE ? OR lower(address) LIKE ? " , "%#{term}%" , "%#{term}%" , "%#{term}%")
   end
 
    def self.price_range(minimum_price,maximum_price)
-   Listing.where("price >= ? AND price <= ?" ,minimum_price,maximum_price)
+   self.where("price >= ? AND price <= ?" ,minimum_price,maximum_price)
    end
   
 

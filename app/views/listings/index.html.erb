@@ -1,4 +1,5 @@
 <body style=" background-color: #f1f1f1;">
+  
 
       <div class="container">
       
@@ -8,10 +9,9 @@
        <h1>Listings</h1>
           
                  
-                <%= link_to "Clear",listings_path,class:"btn btn-outline-default waves-effect"%>
 
 
-                  <div id="tag_cloud">
+                  <div id="tag_cloud" class="container-fluid">
                         <% tag_cloud Listing.tag_counts, %w[s m l] do |tag, css_class| %>
                         <%= link_to tag.name, tag_path(tag.name), class: css_class %>
                         <% end %>
@@ -20,8 +20,8 @@
                  
                     <%= render partial:'form_with' %>
 
-                <div id="card-columns">
-                            <%= render partial:'index',remote:true %>
+                <div id="card-columns" style="margin: 0 auto;">
+                        <%= render partial:'index',remote:true %>
                 </div>
          
                

@@ -31,7 +31,7 @@
 
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application' %>
 
     
   </head> 
@@ -52,11 +52,12 @@
                                     <% end %>
                               <% end %>
 
-
+ 
 
 
 
     <%= yield %>
+
 
                               <% unless current_page?(root_path) %>                            
                                 <%= render partial:'footer'%>

@@ -121,3 +121,92 @@ h1,h2,h3,h4 {
     width: 100%;
   }
 }
+
+.navbar {
+    border: 0;
+    margin-bottom: 20px;
+   
+    &.fixed-top{
+        border-radius: 0;
+    }
+
+    .navbar-nav{
+        .nav-item .nav-link{
+            position: relative;
+            color: inherit;
+            text-transform: uppercase;
+            line-height: 20px;
+
+           
+            &.profile-photo{
+                padding: 0;
+                margin: 0 3px;
+
+                &:after{
+                    display: none;
+                }
+
+                & .profile-photo-small{
+                    height: 40px;
+                    width: 40px;
+                }
+
+                .ripple-container{
+                    border-radius: 50%;
+                }
+            }
+        }
+
+        .dropdown-menu-right{
+            transform-origin: 100% 0;
+        }
+
+        .nav-item.active .nav-link{
+            &,
+            &:hover,
+            &:focus {
+              color: inherit;
+              background-color: rgba(255, 255, 255, 0.1);
+            }
+        }
+    }
+
+    .btn,
+    .navbar-nav .nav-item .btn{
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .navbar-toggler{
+        cursor: pointer;
+
+        .navbar-toggler-icon{
+          position: relative;
+          width: 22px;
+          height: 2px;
+          vertical-align: middle;
+          outline: 0;
+          display: block;
+          border-radius: 1px;
+
+            & + .navbar-toggler-icon{
+                margin-top: 4px;
+            }
+        }
+    }
+
+    &.navbar-absolute{
+        position: absolute;
+        width: 100%;
+        padding-top: 10px;
+        z-index: 1029;
+    }
+
+    .navbar-wrapper{
+        display: inline-flex;
+        align-items: center;
+    }
+
+  
+
+}

@@ -2,28 +2,26 @@ class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
 
   def index
-    if params[:term] && params[:minimum_price] && params[:maximum_price]
+    if params[:term] && params[:minimum_price] && params[:maximum_price] 
 
-     @listing = Listing.price_range(params[:minimum_price],params[:maximum_price]).page(params[:page]) && Listing.search(params[:term].downcase).page(params[:page])
-     
-    elsif params[:term]
-      @listing = Listing.search(params[:term].downcase).page(params[:page])
-      
-    elsif params[:minimum_price] && params[:maximum_price]
-      @listing = Listing.price_range(params[:minimum_price],params[:maximum_price]).page(params[:page])
+       @listing = Listing.price_range(params[:minimum_price],params[:maximum_price])
+       @listing = @listing.search(params[:term].downcase)
+       @listing = Kaminari.paginate_array(@listing).page(params[:page])
+
     else
       @listing = Listing.all.order(created_at: :desc).page(params[:page])
     end
-
     if params[:tag]
-    @listing = Listing.tagged_with(params[:tag]).page(params[:page])
+     @listing = Listing.tagged_with(params[:tag]).page(params[:page])
     end
     
     respond_to do |format|    
         format.html {render :index }
         format.js
+   
     end
-    end
+
+  end
         
 
  

@@ -58,6 +58,8 @@ class AdminController < ApplicationController
      def tags
         if current_user.admin? || current_user.host?
             @tags = Tag.all
+            # @tags = Tag.all.sort {|a,b| a.tag_counts <=> b.tag_counts}
+
         else
             redirect_to listings_path, danger:"You not an admin!"
         end
