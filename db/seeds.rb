@@ -12,11 +12,11 @@ Tag.create(name: "Events or parties allowed")
 Tag.create(name: "Pets Allowed")
 Tag.create(name: "Smoking allowed")
 Tag.create(name: "Children suitable")
-Tag.create(name: "Essentials")
-Tag.create(name: "Gym")
-Tag.create(name: "Air conditioning")
-Tag.create(name: "Pool")
-Tag.create(name: "TV")
+# Tag.create(name: "Essentials")
+# Tag.create(name: "Gym")
+# Tag.create(name: "Air conditioning")
+# Tag.create(name: "Pool")
+# Tag.create(name: "TV")
 
 
 # Random genereate user!

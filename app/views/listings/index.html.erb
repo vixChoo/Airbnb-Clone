@@ -1,4 +1,5 @@
 <body style=" background-color: #f1f1f1;">
+  
 
       <div class="container">
       
@@ -8,12 +9,19 @@
        <h1>Listings</h1>
           
                  
-                <%= link_to "Clear",listings_path,class:"btn btn-2"%>
 
+
+                  <div id="tag_cloud" class="container-fluid">
+                        <% tag_cloud Listing.tag_counts, %w[s m l] do |tag, css_class| %>
+                        <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+                        <% end %>
+                  </div>
+
+                 
                     <%= render partial:'form_with' %>
 
-                <div id="card-columns">
-                            <%= render partial:'index',remote:true %>
+                <div id="card-columns" style="margin: 0 auto;">
+                        <%= render partial:'listings',remote:true %>
                 </div>
          
                
@@ -22,13 +30,6 @@
 </body>
 
       <script>  
-// $(document).ready(function(){
-//   $("#myInput").on("keyup", function() {
-//     var value = $(this).val().toLowerCase();
-//     $("#myTable tb").filter(function() {
-//       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-//     });
-//   });
-// });
+
 </script>
 

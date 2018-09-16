@@ -4,6 +4,9 @@ class Reservation < ApplicationRecord
 
     validate :check_overlapping
 
+    enum status:["unpay","paid"]
+
+
     
 
 

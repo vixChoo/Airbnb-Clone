@@ -1,8 +1,8 @@
+<%= render 'carouselshow'%>
 
 <div class="container" style="">
 <div class="row">
-<div class="card border-info mb-3" style="max-width: 30rem;">
-<div class="card-header bg-transparent border-info">
+
       <h5 class="card-title">       
             <strong>Name:</strong>
             <%= @listing.name %>
@@ -65,15 +65,16 @@
 </div>
 </div>
 <div class="col-md-6 ml-auto">
-<div class="card text-center">
+<div class="card border-dark">
   <div class="card-header">
     <h1>New Reservation</h1>
   </div>
           <%= render partial: 'reservations/form', reservation: @reservation %>
+ <div class="card-footer border-dark">
           <%= link_to 'Back', listings_path %>
-          </div>
+</div>
+</div>
 </div>
 
-</div>
-</div>
+<
 

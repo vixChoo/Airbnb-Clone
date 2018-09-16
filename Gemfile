@@ -62,13 +62,15 @@ gem 'sidekiq', '~> 5.2', '>= 5.2.1'
 # gem 'capistrano-rails', group: :development
 
 # Reduces boot times through caching; required in config/boot.rb
+  gem 'faker'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'faker'
-  gem "figaro"
+  gem "figaro"  
+  gem 'rspec', '~> 3.8'
+  gem 'rspec-rails', '~> 3.8'
 end
 
 group :development do

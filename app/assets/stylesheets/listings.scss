@@ -5,6 +5,7 @@
 .container{
     font-family: 'Julius Sans One', sans-serif;
 }
+ 
 
 .btn:hover {
   background-position: right center; /* change the direction of the change here */
@@ -12,7 +13,7 @@
 }
 
 
-.btn-4 , .btn-2  {
+.btn-4 ,.btn-2 , .btn-3 ,.btn-1,.btn-5 {
   background-image: linear-gradient(to right, #a1c4fd 0%, #c2e9fb 51%, #a1c4fd 100%);
   flex: 1 1 auto;
   text-align: center;
@@ -30,3 +31,34 @@
   background-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);
   color: white;
 }
+
+
+.btn-1 {
+  background-image: linear-gradient(to right, #f6d365 0%, #fda085 51%, #f6d365 100%);
+}
+
+
+.btn-3 {
+  background-image: linear-gradient(to right, #84fab0 0%, #8fd3f4 51%, #84fab0 100%);
+}
+
+.btn-4 {
+  background-image: linear-gradient(to right, #a1c4fd 0%, #c2e9fb 51%, #a1c4fd 100%);
+}
+
+/* Magic Stuff End -> */
+#tag_cloud {
+  width: 400px;
+  line-height: 1.6em;
+  .s { font-size: 0.8em; }
+  .m { font-size: 1.2em; }
+  .l { font-size: 1.8em; }
+}
+// #tag_cloud {
+//   width: 400px;
+//   line-height: 1.6em;
+//   .s { font-size: 1.2em; }
+//   .m { font-size: 1.2em; }
+//   .l { font-size: 1.2em; }
+// }
+

@@ -28,7 +28,8 @@ class ReservationsController < ApplicationController
   # POST /reservations
   # POST /reservations.json
   def create
-      @reservation = Reservation.new(reservation_params)
+    @reservation = Reservation.new(reservation_params)
+    @reservation.check_overlapping(reservation_params)
       @reservation.user_id = current_user.id
       @user = current_user
 

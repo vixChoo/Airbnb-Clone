@@ -1,0 +1,53 @@
+
+
+
+
+<% if current_user.admin? || current_user.host? %>  
+
+    <%= render partial:'application/navadmin' %>
+    <br>
+    <div class="table-responsive">
+        <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>TOTAL Users: <%=@users.count %></th>
+
+        <tr>
+        </thead>
+        <thead>
+        <tr>
+            <th>User Id</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Role</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody id="myDIV">
+  
+        <% @users.order(created_at: :desc).each do |user| %>
+        <tr>
+            <td><%= user.id %></td>
+            <td><%= user.first_name %></td>
+            <td><%= user.last_name %></td>
+            <td><%= user.role %></td>
+ 
+        <% if user.admin? || user.host?%>  
+                <td><%= link_to "Disable Admin", destroy_admin_path(user.id),data: { confirm: 'Are you sure?' }%></td></td>
+            <% else %>
+                <td><%= link_to "Make Admin", make_admin_path(user.id),data: { confirm: 'Are you sure?' }%></td>
+            <% end %>
+        </tr>
+        <% end %>
+        </tbody>
+    </table>
+    </div>
+<% end %>
+        
+           
+
+
+
+        
+      
+       

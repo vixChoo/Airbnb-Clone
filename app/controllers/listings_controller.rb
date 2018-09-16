@@ -2,24 +2,30 @@ class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
 
   def index
-    if params[:term] && params[:minimum_price] && params[:maximum_price]
+    if params[:term] && params[:minimum_price] && params[:maximum_price] 
 
-     @listing = Listing.price_range(params[:minimum_price],params[:maximum_price]).page(params[:page]) && Listing.search(params[:term].downcase).page(params[:page])
-     
-    elsif params[:term]
-      @listing = Listing.search(params[:term].downcase).page(params[:page])
-      
-    elsif params[:minimum_price] && params[:maximum_price]
-      @listing = Listing.price_range(params[:minimum_price],params[:maximum_price]).page(params[:page])
+       @listing = Listing.price_range(params[:minimum_price],params[:maximum_price])
+       @listing = @listing.search(params[:term].downcase)
+       @listing = Kaminari.paginate_array(@listing).page(params[:page])
+
+    elsif params[:tag] || params[:term] && params[:minimum_price] && params[:maximum_price]
+     @listing = Listing.tagged_with(params[:tag])
+     @listing = @listing.search(params[:term].downcase) if params[:term].present?
+     @listing = @listing.price_range(params[:minimum_price],params[:maximum_price]) if params[:minimum_price].present? && params[:maximum_price].present?
+     @listing = Kaminari.paginate_array(@listing).page(params[:page])
+
     else
       @listing = Listing.all.order(created_at: :desc).page(params[:page])
     end
     
+    
     respond_to do |format|    
         format.html {render :index }
         format.js
+   
     end
-    end
+
+  end
         
 
  
@@ -90,18 +96,18 @@ class ListingsController < ApplicationController
 
   # DELETE /listings/1
   # DELETE /listings/1.json
-  def destroy
-    @listing.destroy
-    respond_to do |format|
-      format.html { redirect_to listings_url, success: 'Listing was successfully destroyed.' }
-      format.json { head :no_content }
+    def destroy
+      @listing.destroy
+      respond_to do |format|
+        format.html { redirect_back fallback_location: listings_url, danger: 'Listing was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_listing
-      @listing = Listing.find(params[:id])
+          @listing = Listing.find(params[:id])     
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
