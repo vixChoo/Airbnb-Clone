@@ -4,12 +4,22 @@ one:
   belongs_to: 
   belongs_to: MyString
   status: 1
+<<<<<<< HEAD
   start_date: 2018-08-14
   end_date: 2018-08-14
+=======
+  start_date: 2018-08-15
+  end_date: 2018-08-15
+>>>>>>> 8390f2a331652945e2910d6d6a7eb67ef22ed9d2
 
 two:
   belongs_to: 
   belongs_to: MyString
   status: 1
+<<<<<<< HEAD
   start_date: 2018-08-14
   end_date: 2018-08-14
+=======
+  start_date: 2018-08-15
+  end_date: 2018-08-15
+>>>>>>> 8390f2a331652945e2910d6d6a7eb67ef22ed9d2

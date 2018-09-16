@@ -23,17 +23,16 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 
-gem 'bootstrap', '~> 4.1', '>= 4.1.3'
+# gem 'bootstrap', '~> 4.1', '>= 4.1.3'
 
-gem 'sprockets-rails', '~> 3.2', '>= 3.2.1'
+# gem 'sprockets-rails', '~> 3.2', '>= 3.2.1'
+  
+# gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 
-gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
-
-gem 'popper_js', '~> 1.14', '>= 1.14.3'
+# gem 'popper_js', '~> 1.14', '>= 1.14.3'
 
 gem "clearance"
 
-gem "figaro"
 
 gem 'omniauth'
 
@@ -45,11 +44,18 @@ gem 'carrierwave', '~> 1.0'
 
 gem "fog-aws"
 
+<<<<<<< HEAD
+=======
+gem 'braintree'
+
+gem 'sidekiq', '~> 5.2', '>= 5.2.1'
+>>>>>>> 8390f2a331652945e2910d6d6a7eb67ef22ed9d2
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
@@ -59,12 +65,15 @@ gem "fog-aws"
 # gem 'capistrano-rails', group: :development
 
 # Reduces boot times through caching; required in config/boot.rb
+  gem 'faker'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'faker'
+  gem "figaro"  
+  gem 'rspec', '~> 3.8'
+  gem 'rspec-rails', '~> 3.8'
 end
 
 group :development do

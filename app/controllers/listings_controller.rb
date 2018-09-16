@@ -4,8 +4,40 @@ class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.json
   def index
-    params[:tag] ? @listing = Listing.tagged_with(params[:tag]) : @listing = Listing.all.order(created_at: :desc).page(params[:page])
+    if params[:term] && params[:minimum_price] && params[:maximum_price] 
+
+       @listing = Listing.price_range(params[:minimum_price],params[:maximum_price])
+       @listing = @listing.search(params[:term].downcase)
+       @listing = Kaminari.paginate_array(@listing).page(params[:page])
+
+    elsif params[:tag] || params[:term] && params[:minimum_price] && params[:maximum_price]
+     @listing = Listing.tagged_with(params[:tag])
+     @listing = @listing.search(params[:term].downcase) if params[:term].present?
+     @listing = @listing.price_range(params[:minimum_price],params[:maximum_price]) if params[:minimum_price].present? && params[:maximum_price].present?
+     @listing = Kaminari.paginate_array(@listing).page(params[:page])
+
+    else
+      @listing = Listing.all.order(created_at: :desc).page(params[:page])
+    end
+    
+    
+    respond_to do |format|    
+        format.html {render :index }
+        format.js
+   
+    end
+
   end
+<<<<<<< HEAD
+=======
+        
+
+ 
+ 
+
+  # GET /listings
+  # GET /listings.json
+>>>>>>> 8390f2a331652945e2910d6d6a7eb67ef22ed9d2
   # def index
   #   @listings = Listing.all
   # end
@@ -17,8 +49,17 @@ class ListingsController < ApplicationController
     if signed_in?
       @reservation = Reservation.new
 
+<<<<<<< HEAD
       else
        redirect_to sign_in_path ,notice: 'Sign in to book a room.' 
+=======
+  def show
+     if signed_in?
+      @reservation = Reservation.new
+      else
+        redirect_to sign_in_path, info: 'Sign in to book a room.'
+
+>>>>>>> 8390f2a331652945e2910d6d6a7eb67ef22ed9d2
     end
   end
 
@@ -27,8 +68,12 @@ class ListingsController < ApplicationController
     if signed_in?
       @listing = Listing.new
       else
+<<<<<<< HEAD
        redirect_to sign_in_path ,notice: 'Sign in to create a new list.' 
 
+=======
+      redirect_to sign_in_path, info: 'Sign in to create a list.'
+>>>>>>> 8390f2a331652945e2910d6d6a7eb67ef22ed9d2
     end
   end
 
@@ -45,7 +90,7 @@ class ListingsController < ApplicationController
     
     respond_to do |format|
       if @listing.save
-        format.html { redirect_to @listing, notice: 'Listing was successfully created.' }
+        format.html { redirect_to @listing, success: 'Listing was successfully created.' }
         format.json { render :show, status: :created, location: @listing }
       else
         format.html { render :new }
@@ -59,7 +104,7 @@ class ListingsController < ApplicationController
   def update
     respond_to do |format|
       if @listing.update(listing_params)
-        format.html { redirect_to @listing, notice: 'Listing was successfully updated.' }
+        format.html { redirect_to @listing, success: 'Listing was successfully updated.' }
         format.json { render :show, status: :ok, location: @listing }
       else
         format.html { render :edit }
@@ -70,23 +115,23 @@ class ListingsController < ApplicationController
 
   # DELETE /listings/1
   # DELETE /listings/1.json
-  def destroy
-    @listing.destroy
-    respond_to do |format|
-      format.html { redirect_to listings_url, notice: 'Listing was successfully destroyed.' }
-      format.json { head :no_content }
+    def destroy
+      @listing.destroy
+      respond_to do |format|
+        format.html { redirect_back fallback_location: listings_url, danger: 'Listing was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_listing
-      @listing = Listing.find(params[:id])
+          @listing = Listing.find(params[:id])     
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
-      params.require(:listing).permit(:name, :price, :description, :address, :country, :city, :house_rules,
-         :property_type, :facility, :amenity,{images: []},:tag_list, :tag, { tag_ids: [] }, :tag_ids)
+      params.require(:listing).permit(:name, :price, :minimum_price, :maximum_price,:description, :address, :country, :city, :house_rules,
+         :property_type, :facility, :amenity,:term ,{images: []},:tag_list, :tag, { tag_ids: [] }, :tag_ids)
     end
 end

@@ -1,0 +1,236 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <style type="text/css">
+    /* Navigation*/
+    .navbar {
+      background-color: transparent;
+    }
+ 
+    .top-nav-collapse {
+      background-color: #667490;
+    }
+    @media only screen and (max-width: 768px) {
+      .navbar {
+        background-color: #667490;
+        opacity:0.8;
+      }
+
+      h1,h2,h3,h4 {
+    font-weight: 500;
+    }
+
+    .super-heading {
+    font-family: 'Julius Sans One', sans-serif;
+        font-size: 40px; 
+    }
+    }
+
+    /* Necessary for full page carousel*/
+    html,
+    body,
+    .view {
+      height: 100%;
+    }
+
+    /* Carousel*/
+    .carousel,
+    .carousel-item,
+    .carousel-item.active {
+      height: 100%;
+    }
+    .carousel-inner {
+      height: 100%;
+    }
+    .carousel-item:nth-child(1) {
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+    }
+    .carousel-item:nth-child(2) {
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+    }
+    .carousel-item:nth-child(3) {
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+    }
+    
+  </style>
+</head>
+
+<body>
+
+  <!--Navbar-->
+  <div class="nav_bar">
+  <nav class="navbar navbar-expand-lg navbar-dark scrolling-navbar fixed-top">
+
+    <!-- Navbar brand -->
+      <%= link_to image_tag("pink.png", alt: "logo",style:"width:100px;padding-top:0px;", title:"Home"), '/', class: 'navbar-brand' %>
+
+    <!-- Collapse button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="basicExampleNav">
+
+      <!-- Links -->
+      <ul class="navbar-nav ml-auto navbar-right">
+        <li class="nav-item active">
+        <% if signed_in? %>
+              <%= link_to 'Become a Host' ,new_listing_path , class:"nav-link"%><span class="sr-only">(current)</span></li>
+                            
+            <% else %>
+              <li class="nav-item">
+                <%= link_to 'Sign in', sign_in_path  , class:"nav-link"%></li>		
+            <% end %>
+        <!-- Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <% if signed_in? %>
+
+                  <% if current_user.avatar.present? %>
+                      <%= image_tag current_user.avatar.url,width:"28",height:"28", class:"rounded-circle img-responsive"%>                              
+                      <% else %>
+                      
+                          <%= current_user.first_name %>
+                  <% end %>
+                <% else %>
+                    Profile
+                <% end %>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+            <%= link_to 'Listings',listings_path, class:"dropdown-item"%>
+                  
+								<% if signed_in? %>
+
+                  <%= link_to 'Profile',static_profile_path, class:"dropdown-item"%>
+
+								<% if current_user.admin? || current_user.host?%>
+                      <%= link_to 'Admin', admin_index_path, class:"dropdown-item" %>
+                <% end %>
+
+                 <div class="dropdown-divider"></div>
+         		    	 <%= link_to 'Sign out', sign_out_path, method: :delete  , class:"dropdown-item"%>
+         
+                <% else %>
+                <%= link_to 'Sign in', sign_in_path  , class:"dropdown-item"%>				
+          <div class="dropdown-divider"></div>
+                 <%= link_to "Sign in with Google", "/auth/google_oauth2", class:"dropdown-item" %>
+                <% end %>
+          </div>
+
+          </div>
+        </li>
+      </ul>
+      <!-- Links -->
+
+    </div>
+    <!-- Collapsible content -->
+
+  </nav>
+  <!--/.Navbar-->
+
+  <!--Carousel Wrapper-->
+  <div id="carousel-example-1" class="carousel slide carousel-fade" data-ride="carousel">
+
+    <!--Indicators-->
+    <ol class="carousel-indicators">
+      <li data-target="#carousel-example-1" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel-example-1" data-slide-to="1"></li>
+      <li data-target="#carousel-example-1" data-slide-to="2"></li>
+    </ol>
+    <!--/.Indicators-->
+
+    <!--Slides-->
+    <div class="carousel-inner" role="listbox">
+    
+
+      <!--First slide-->
+      <div class="carousel-item active">
+        <!--Mask-->
+        <div class="view">
+          <div class="full-bg-img flex-center mask rgba-indigo-light white-text"  style="background-image: url(<%= asset_path ["13.jpg","4.jpg","15.jpg","16.jpg","15.jpg"].sample %>);">
+            <div class="overlay"></div>
+            <ul class="animated fadeInUp col-md-12 list-unstyled list-inline">
+              <li>
+                 <h3 class="super-heading">Travel With AirBnB</h3>
+              </li>
+            <li>
+                <a href="/listings" class="btn btn-outline waves-effect" style="color: #fff!important;border-color: #fff!important;border-width: 0.18rem!important;">Go Now</a>
+            </li>            
+            </ul>
+          </div>
+        </div>
+        <!--/.Mask-->
+      </div>
+      <!--/.First slide-->
+
+      <!--Second slide -->
+      <div class="carousel-item">
+        <!--Mask-->
+        <div class="view">
+          <div class="full-bg-img flex-center mask rgba-purple-light white-text" style="background-image: url(<%= asset_path ["0.jpg","6.jpg","12.jpg","7.jpg","8.jpg","9.jpg"].sample %>);" >
+            <div class="overlay"></div>
+                <ul class="animated fadeInUp col-md-12 list-unstyled">
+                <li>
+                <p class="super-heading">With your loved ones</p>
+              </li>
+              <li>
+               <%= link_to "Go Now",listings_path,class:"btn btn-outline" ,style:"color: #fff; border-color: #fff;border-width: 0.18rem;" %>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!--/.Mask-->
+      </div>
+      <!--/.Second slide -->
+
+      <!--Third slide-->
+      <div class="carousel-item">
+        <!--Mask-->
+        <div class="view">
+          <div class="full-bg-img flex-center mask rgba-blue-light white-text"  style="background-image: url(<%= asset_path ["10.jpg","2.jpg","14.jpg","3.jpg"].sample %>);">
+            <div class="overlay"></div>
+            <ul class="animated fadeInUp col-md-12 list-unstyled">              
+              <li>
+                 <p class="super-heading">To any places</p>
+                </li>
+              <li>
+                    <a href="/listings" class="btn btn-outline" style="color: #fff; border-color: #fff;border-width: 0.18rem;">Go Now</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!--/.Mask-->
+      </div>
+      <!--/.Third slide-->
+
+    </div>
+    <!--/.Slides-->
+
+    <!--Controls-->
+    <a class="carousel-control-prev" href="#carousel-example-1" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carousel-example-1" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+    <!--/.Controls-->
+  </div>
+  <!--/.Carousel Wrapper-->
+  
+
+
+</body>
+
+</html>

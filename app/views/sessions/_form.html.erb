@@ -1,22 +1,39 @@
-<%= form_for :session, url: session_path do |form| %>
+
+<%= form_for :session, html: {class: "text-center border border-light p-5"},url: session_path do |form| %>
+ <p class="h4 mb-4">Sign in</p>
+ 
   <div class="text-field">
-    <%= form.label :email %>
-    <%= form.text_field :email, type: 'email' %>
+    <% form.label :email %>
+    <%= form.text_field :email, type: 'email',class: "form-control mb-4",id:"defaultLoginFormEmail" ,placeholder:"E-mail"%>
   </div>
 
   <div class="password-field">
-    <%= form.label :password %>
-    <%= form.password_field :password %>
+    <% form.label :password %>
+    <%= form.password_field :password ,class: "form-control mb-4",id:"defaultLoginFormPassword",placeholder:"Password" %>
   </div>
 
+    <div>
+    <%= link_to t(".forgot_password"), new_password_path %>
+    </div>
+
   <div class="submit-field">
-    <%= form.submit %>
+    <%= form.submit'Sign In',:class => "btn btn-info btn-block my-4"%>
   </div>
 
   <div class="other-links">
     <% if Clearance.configuration.allow_sign_up? %>
+      <p>Not a member?
       <%= link_to t(".sign_up"), sign_up_path %>
-    <% end %>
-    <%= link_to t(".forgot_password"), new_password_path %>
+    </p>
+ 
+   
+      <p>or sign in with:</p>
+      <a href="/auth/google_oauth2", type="button" class="light-blue-text mx-2">
+        <i class="fa fa-google"></i>
+      </a>
+    <% end %>    
+    
+     <div>
+    </div>
   </div>
 <% end %>

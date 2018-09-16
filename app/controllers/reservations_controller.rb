@@ -1,15 +1,52 @@
 class ReservationsController < ApplicationController
   before_action :set_reservation, only: [:show, :edit, :update, :destroy]
+<<<<<<< HEAD
+=======
+  # GET /reservations
+  # GET /reservations.json
+  def index
+    @reservation = Reservation.all
+  end
+
+  # GET /reservations/1
+  # GET /reservations/1.json
+  def show
+  end
+
+  # GET /reservations/new
+  def new
+    if signed_in?
+      @reservation = Reservation.new
+      else
+        redirect_to sign_in_path, info: 'Kindly sign in to book a room.'
+
+    end
+  end
+
+  # GET /reservations/1/edit
+  def edit
+  end
+>>>>>>> 8390f2a331652945e2910d6d6a7eb67ef22ed9d2
 
   # POST /reservations
   # POST /reservations.json
   def create
     @reservation = Reservation.new(reservation_params)
+<<<<<<< HEAD
     @reservation.user_id = current_user.id
 
 
     respond_to do |format|
       if @reservation.save
+=======
+    @reservation.check_overlapping(reservation_params)
+      @reservation.user_id = current_user.id
+      @user = current_user
+
+    respond_to do |format|
+      if @reservation.save
+        ReservationJob.perform_later(current_user,@reservation)
+>>>>>>> 8390f2a331652945e2910d6d6a7eb67ef22ed9d2
         format.html { redirect_to @reservation, notice: 'Reservation was successfully created.' }
         format.json { render :show, status: :created, location: @reservation }
       else

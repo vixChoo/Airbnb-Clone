@@ -1,13 +1,10 @@
 <body style=" background-color: #f1f1f1;">
+  
+
       <div class="container">
+      
 
-
-          <p id="notice"><%= notice %></p>
-
-          <h1>Listings</h1>
-
-          <%= paginate @listing %>
-
+<<<<<<< HEAD
             
              
              <div class="card-deck">
@@ -24,46 +21,34 @@
                 <%= image_tag img.sample, style:'height:200px;width:20rem;' ,class:"card-img-top" %>
 
               <% end %>
+=======
+>>>>>>> 8390f2a331652945e2910d6d6a7eb67ef22ed9d2
                 
-            <div class="card-body">
-            <tbody>
-                <tr>
-                  <h4 class="card-title"><td ><%= listing.name %></td></h4>
-                   <hr>
-                  <td><%= listing.price %></td>
-                  <td><%= listing.description %></td>
-                  <td><%= listing.address %></td>
-                  <td><%= listing.country %></td>
-                  <td><%= listing.city %></td>
-                  <td><%= listing.house_rules %></td>
-                  <td><%= listing.property_type %></td>
-                  <td><%= listing.facility %></td>
-                  <td><%= listing.amenity %></td>
-                  <td><%= link_to 'Book Now', listing ,class:"btn btn-primary" %></td>
-                  <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
-                  <td><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                </tr>
-            </tbody>
-            </div>
-          </div>
-          </div>
-          </div>
-              <% end %>
-          </div>
-       
-        
 
-          <%= paginate @listing %>
+       <h1>Listings</h1>
+          
+                 
 
 
-          <br>
+                  <div id="tag_cloud" class="container-fluid">
+                        <% tag_cloud Listing.tag_counts, %w[s m l] do |tag, css_class| %>
+                        <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+                        <% end %>
+                  </div>
 
+                 
+                    <%= render partial:'form_with' %>
 
-          <%# <p><small>Tags: <%= raw @post.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %>
+                <div id="card-columns" style="margin: 0 auto;">
+                        <%= render partial:'listings',remote:true %>
+                </div>
+         
+               
+  
+         </div>
+</body>
 
-          <div class = "col-md-2 offset-2">
+      <script>  
 
+</script>
 
-        </div>
-  </div>
-  </body>

@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 # require 'fog/aws'
+=======
+>>>>>>> 8390f2a331652945e2910d6d6a7eb67ef22ed9d2
 # CarrierWave.configure do |config|
 
 #   config.permissions = 0666

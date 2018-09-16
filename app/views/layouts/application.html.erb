@@ -6,15 +6,54 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 		 <meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+          <!-- Font Awesome -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+      <!-- Bootstrap core CSS -->
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+      <!-- Material Design Bootstrap -->
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.9/css/mdb.min.css" rel="stylesheet">
+      <%# <link rel='stylesheet' id='compiled.css-css'  href='https://mdbootstrap.com/wp-content/themes/mdbootstrap4/css/compiled-4.5.9.min.css?ver=4.5.9' type='text/css' media='all' /> %>
+
+      
+              <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One" rel="stylesheet">
+              <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+<style>
+.navbar-expand-lg{
+    box-shadow: none;
+}
+</style>
+
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-              <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One" rel="stylesheet">
+    <%= javascript_include_tag 'application' %>
 
     
-  </head>
+  </head> 
+
+  <body>
+
+                            <% unless current_page?(root_path) %>
+                              <div style="font-family: 'Julius Sans One', sans-serif;"> 
+                                  <%= render partial:'navbar'%>
+                              </div>
+                            <% end %>
+                    
+                              <% if flash.present? %>
+                                    <% flash.each do |name, msg| %>
+                                      <div class="alert alert-<%= name %> text-center" role="alert">
+                                      <%= msg %>
+                                      </div>
+                                    <% end %>
+                              <% end %>
+
  
- 
+<<<<<<< HEAD
 				<nav class="navbar navbar-expand-md bg-transparent navbar-fixed-top">
 				
 						<!-- Brand/logo -->
@@ -41,7 +80,20 @@
 						</ul>
 				</div>
 		</nav>
+=======
+
+
+>>>>>>> 8390f2a331652945e2910d6d6a7eb67ef22ed9d2
 
     <%= yield %>
+
+
+                              <% unless current_page?(root_path) || (static_random_path) %>                            
+                                <%= render partial:'footer'%>
+                            <% end %> 
+                              
+				
+
+      
   </body>
 </html>

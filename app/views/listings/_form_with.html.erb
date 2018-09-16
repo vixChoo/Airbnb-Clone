@@ -1,0 +1,160 @@
+              
+<div class="row" id="row">
+
+ <%= form_with url: listings_path, remote:true,method: :get do |f| %>
+
+   <% if (params[:minimum_price].present?) %>
+          <span>
+                <%= f.number_field :minimum_price, placeholder:"MIN",value: params[:minimum_price] ,class:"balloon"%>
+         </span>
+          <span>
+                 <%= f.label :minimum_price ,"Min"%>
+         </span>
+          <% else %>
+           <span>
+                <%= f.number_field :minimum_price, placeholder:"MIN",value: 0 ,class:"balloon"%>
+                 <%= f.label :minimum_price ,"Min"%>
+            </span>
+        <% end %>
+
+        <% if (params[:maximum_price].present?) %>
+         <span>
+                <%= f.number_field :maximum_price,placeholder:"MAX", value: params[:maximum_price] ,class:"balloon"%>
+                 <%= f.label :maximum_price, "Max" %>
+         </span>
+        <% else %>
+         <span>
+                <%= f.number_field :maximum_price,placeholder:"MAX", value:100000  ,class:"balloon"%>
+                 <%= f.label :maximum_price, "Max"%>
+         </span>
+        <% end %>
+
+         <span>
+           <%= f.text_field :term, placeholder:"City?",value: params[:term] ,class:"balloon"%>
+                 <%= f.label :name %>
+         </span>
+                <%= f.submit "Search", name: '',class:"btn btn-mdb-color" %>
+    
+            <% end %>
+          
+           <div class="text-center" style="margin: 0 auto;">
+
+                <%= link_to "Clear",listings_path,class:"btn btn-outline-default waves-effect"%>
+
+          </div>       
+    </div>       
+    
+
+
+<style>  
+
+#row {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px 20px;
+  background: white;
+  border-radius: 3px;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+#row:before {
+  position: absolute;
+  content: "";
+  display: block;
+  top: 0;
+  left: -5000px;
+  height: 100%;
+  width: 6100px;
+  z-index: -1;
+  background: inherit;
+  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+}
+
+#row span {
+  position: relative;
+  display: inline-block;
+  margin: 30px 10px;
+
+}
+
+.balloon {
+  display: inline-block;
+  width: 215px;
+  padding: 10px 0 10px 15px;
+  font-family: "Open Sans", sans;
+  font-weight: 400;
+  color: #377D6A;
+  background: #efefef;
+  border: 0;
+  border-radius: 3px;
+  outline: 0;
+  text-indent: 60px;
+  transition: all .3s ease-in-out;
+}
+.balloon::-webkit-input-placeholder {
+  color: #efefef;
+  text-indent: 0;
+  font-weight: 300;
+}
+.balloon + label {
+  display: inline-block;
+  position: absolute;
+  top: 8px;
+  left: 0;
+  bottom: 8px;
+  padding: 5px 15px;
+  color: #032429;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-shadow: 0 1px 0 rgba(19, 74, 70, 0);
+  transition: all .3s ease-in-out;
+  border-radius: 3px;
+  background: rgba(122, 184, 147, 0);
+}
+.balloon + label:after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 0;
+  top: 100%;
+  left: 50%;
+  margin-left: -3px;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-top: 3px solid rgba(122, 184, 147, 0);
+  transition: all .3s ease-in-out;
+}
+
+.balloon:focus,
+.balloon:active {
+  color: #377D6A;
+  text-indent: 0;
+  background: #fff;
+  margin-bottom: 5px;
+}
+.balloon:focus::-webkit-input-placeholder,
+.balloon:active::-webkit-input-placeholder {
+  color: #74b9ff;
+}
+.balloon:focus + label,
+.balloon:active + label {
+  color: #fff;
+  text-shadow: 0 1px 0 rgba(19, 74, 70, 0.4);
+  background: #a29bfe;
+  transform: translateY(-40px);
+
+ 
+}
+.balloon:focus + label:after,
+.balloon:active + label:after {
+  border-top: 4px solid #7ab893;
+
+}
+    </style>
+
+<script>
+
+</script>
