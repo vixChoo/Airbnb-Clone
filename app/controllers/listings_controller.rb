@@ -1,8 +1,6 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
 
-  # GET /listings
-  # GET /listings.json
   def index
     if params[:term] && params[:minimum_price] && params[:maximum_price] 
 
@@ -42,16 +40,19 @@ class ListingsController < ApplicationController
 
   # GET /listings/1
   # GET /listings/1.json
+
   def show 
     if signed_in?
       @reservation = Reservation.new
-
-        redirect_to sign_in_path, info: 'Sign in to book a room.'
-
+      redirect_to sign_in_path, info: 'Sign in to book a room.'
     end
   end
+  
 
-  # GET /listings/new
+
+
+# GET /listings/new
+  def new
     if signed_in?
       @listing = Listing.new
       else
