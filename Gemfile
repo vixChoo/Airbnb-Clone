@@ -49,6 +49,10 @@ gem 'braintree'
 
 gem 'faker'
 
+gem 'sidekiq' , '~> 5.2' ,'>= 5.2.1'
+
+
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 
