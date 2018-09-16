@@ -4,25 +4,6 @@
       <div class="container">
       
 
-<<<<<<< HEAD
-            
-             
-             <div class="card-deck">
-              <% @listing.each do |listing| %>
-              <div class="row">
-                  <div class="col-sm-3">
-              <div class="card card-cascade" style="width: 20rem;max-height:40rem;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);margin-bottom:20px;">
-              <% if listing.images.count == 0 %>
-               <%= image_tag (["14.jpg","4.jpg","2.jpg","3.jpg"].sample), style:'height:200px;width:20rem;' ,class:"card-img-top" %>
-              <% else %>
-            
-              <%   img = [] %>
-                <% listing.images.each{ |image| img << image.url }  %>
-                <%= image_tag img.sample, style:'height:200px;width:20rem;' ,class:"card-img-top" %>
-
-              <% end %>
-=======
->>>>>>> 8390f2a331652945e2910d6d6a7eb67ef22ed9d2
                 
 
        <h1>Listings</h1>

@@ -15,10 +15,6 @@ class User < ApplicationRecord
   has_many :authentications, dependent: :destroy
   has_many :listings, dependent: :destroy
   has_many :reservations, dependent: :destroy
-<<<<<<< HEAD
-=======
-
->>>>>>> 8390f2a331652945e2910d6d6a7eb67ef22ed9d2
   mount_uploader :avatar, AvatarUploader
 
   

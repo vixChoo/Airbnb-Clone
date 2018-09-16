@@ -28,8 +28,6 @@ class ListingsController < ApplicationController
     end
 
   end
-<<<<<<< HEAD
-=======
         
 
  
@@ -37,7 +35,6 @@ class ListingsController < ApplicationController
 
   # GET /listings
   # GET /listings.json
->>>>>>> 8390f2a331652945e2910d6d6a7eb67ef22ed9d2
   # def index
   #   @listings = Listing.all
   # end
@@ -49,31 +46,16 @@ class ListingsController < ApplicationController
     if signed_in?
       @reservation = Reservation.new
 
-<<<<<<< HEAD
-      else
-       redirect_to sign_in_path ,notice: 'Sign in to book a room.' 
-=======
-  def show
-     if signed_in?
-      @reservation = Reservation.new
-      else
         redirect_to sign_in_path, info: 'Sign in to book a room.'
 
->>>>>>> 8390f2a331652945e2910d6d6a7eb67ef22ed9d2
     end
   end
 
   # GET /listings/new
-  def new
     if signed_in?
       @listing = Listing.new
       else
-<<<<<<< HEAD
-       redirect_to sign_in_path ,notice: 'Sign in to create a new list.' 
-
-=======
       redirect_to sign_in_path, info: 'Sign in to create a list.'
->>>>>>> 8390f2a331652945e2910d6d6a7eb67ef22ed9d2
     end
   end
 
