@@ -9,6 +9,7 @@ gem 'rails', '~> 5.2.0'
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
+  
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -31,8 +32,8 @@ gem 'jbuilder', '~> 2.5'
 
 # gem 'popper_js', '~> 1.14', '>= 1.14.3'
 
+#  New Gems
 gem "clearance"
-
 
 gem 'omniauth'
 
@@ -44,12 +45,9 @@ gem 'carrierwave', '~> 1.0'
 
 gem "fog-aws"
 
-<<<<<<< HEAD
-=======
 gem 'braintree'
 
-gem 'sidekiq', '~> 5.2', '>= 5.2.1'
->>>>>>> 8390f2a331652945e2910d6d6a7eb67ef22ed9d2
+
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
@@ -65,7 +63,6 @@ gem 'sidekiq', '~> 5.2', '>= 5.2.1'
 # gem 'capistrano-rails', group: :development
 
 # Reduces boot times through caching; required in config/boot.rb
-  gem 'faker'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
