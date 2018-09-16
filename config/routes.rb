@@ -8,8 +8,8 @@ Rails.application.routes.draw do
 
   # ADMIN
  resources :admin,only: [:index] do
-  
   end
+  
   get 'admin/users' => 'admin#users'
   get 'admin/listings' => 'admin#listings'
   get 'admin/reservations' => 'admin#reservations'

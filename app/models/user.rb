@@ -2,12 +2,15 @@ class User < ApplicationRecord
   include Clearance::User
   enum role: ["member","host","admin"]
 
-  vice = User.find(42)
-  vice.host!
+  # vice = User.find(42)
+  # vice.host!
   # ---> is set sean to admin
   # sean.Admin? --> is it admin?? 
   # enum better use --> interger
 
+  # validates :first_name, presence: true
+  # validates :last_name, presence: true
+  # validates :email, presence: true
 
   has_many :authentications, dependent: :destroy
   has_many :listings, dependent: :destroy

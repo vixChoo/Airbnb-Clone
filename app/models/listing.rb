@@ -1,7 +1,7 @@
 class Listing < ApplicationRecord
    has_many :taggings, dependent: :destroy
-   has_many :reservations, dependent: :destroy
    has_many :tags, through: :taggings
+   has_many :reservations, dependent: :destroy
    belongs_to :user
    paginates_per 12
    mount_uploaders :images, ImageUploader
@@ -14,6 +14,7 @@ class Listing < ApplicationRecord
    self.where("price >= ? AND price <= ?" ,minimum_price,maximum_price)
    end
   
+
 
 
     def self.tagged_with(name)
