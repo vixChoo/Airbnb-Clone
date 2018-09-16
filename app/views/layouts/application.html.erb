@@ -53,37 +53,8 @@
                               <% end %>
 
  
-<<<<<<< HEAD
-				<nav class="navbar navbar-expand-md bg-transparent navbar-fixed-top">
-				
-						<!-- Brand/logo -->
-						 <div class="navbar-header">
-						
-								<%= link_to image_tag("pink.png", alt: "logo",style:"width:100px;padding-top:0px;", title:"Home"), '/', class: 'navbar-brand' %>
-								 <button class="navbar-toggler" data-toggle="collapse" data-target="navbarMenu" style="background-color: lightgrey">
-								  <span class="navbar-toggler-icon" style="color: white"></span>
-								</button>
-				 		  </div>
-						<!-- Links -->
-				  <div id="navbarMenu" class="collapse navbar-collapse" >
-         		 <ul class="navbar-nav ml-auto navbar-right"  >
-											
-									<li> <%= link_to 'Add a Listing' ,new_listing_path%></li>
-								<li><a style="margin-right: 10px" href="/">About</a></li>  
-								<% if signed_in? %>
-         					 <li><%= link_to 'Sign out', sign_out_path, method: :delete %></li>
-										<% else %>
-								<li><%= link_to 'Sign in', sign_in_path %></li>					
-								<% end %>
-													
-																				
-						</ul>
-				</div>
-		</nav>
-=======
 
 
->>>>>>> 8390f2a331652945e2910d6d6a7eb67ef22ed9d2
 
     <%= yield %>
 
