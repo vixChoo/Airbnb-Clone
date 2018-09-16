@@ -1,11 +1,4 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
-  resources :reservations
-  
-  resources :listings
-  root 'listings#home'
-  get "/auth/:provider/callback" => "sessions#create_from_omniauth"
-=======
 
   require 'sidekiq/web'
   mount Sidekiq::Web => 'sidekiq'
@@ -29,7 +22,6 @@ Rails.application.routes.draw do
 
 
   
->>>>>>> 8390f2a331652945e2910d6d6a7eb67ef22ed9d2
 
   get 'tags/:tag', to: 'listings#index', as: :tag
 
