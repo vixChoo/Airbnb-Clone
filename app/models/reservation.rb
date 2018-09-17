@@ -1,9 +1,4 @@
 class Reservation < ApplicationRecord
-<<<<<<< HEAD
-    belongs_to :user
-    belongs_to :listing
-
-=======
     belongs_to :listing
     belongs_to :user
 
@@ -35,5 +30,4 @@ class Reservation < ApplicationRecord
               
                   
                           
->>>>>>> 8390f2a331652945e2910d6d6a7eb67ef22ed9d2
 end
